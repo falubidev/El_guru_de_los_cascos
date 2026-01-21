@@ -1,0 +1,146 @@
+/**
+ * Button Components
+ * Neon-themed button styles
+ */
+
+/* ==================== */
+/* Base Neon Button     */
+/* ==================== */
+.btn-neon {
+  border: var(--border-neon);
+  color: var(--color-neon-primary);
+  background: transparent;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-lg);
+  font-weight: 600;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-neon-sm);
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-neon:hover,
+.btn-neon:focus {
+  background-color: var(--color-neon-primary);
+  color: #000;
+  box-shadow: var(--shadow-neon-lg);
+  transform: scale(1.05);
+}
+
+.btn-neon:focus {
+  outline: 2px solid var(--color-neon-primary);
+  outline-offset: 2px;
+}
+
+.btn-neon:active {
+  transform: scale(0.98);
+}
+
+/* ==================== */
+/* Button Sizes         */
+/* ==================== */
+.btn-neon--xl {
+  font-size: 2rem;
+  padding: 1.25rem 2.5rem;
+  border-width: 3px;
+  letter-spacing: 1px;
+}
+
+.btn-neon--lg {
+  font-size: 1.25rem;
+  padding: 1rem 2rem;
+}
+
+.btn-neon--sm {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+}
+
+/* ==================== */
+/* Outline variants     */
+/* ==================== */
+.btn-outline-neon {
+  border: 2px solid var(--color-neon-primary);
+  color: var(--color-neon-primary);
+  background: transparent;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-lg);
+  font-weight: 600;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-neon-sm);
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-outline-neon:hover,
+.btn-outline-neon:focus {
+  background-color: var(--color-neon-primary);
+  color: #000;
+  box-shadow: var(--shadow-neon-md);
+  transform: scale(1.05);
+}
+
+/* ==================== */
+/* Success Button       */
+/* ==================== */
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-lg);
+  font-weight: 600;
+  transition: var(--transition-fast);
+  cursor: pointer;
+}
+
+.btn-success:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(72, 239, 125, 0.6);
+}
+
+/* ==================== */
+/* Button Block         */
+/* ==================== */
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* ==================== */
+/* Disabled State       */
+/* ==================== */
+.btn-neon:disabled,
+.btn-neon--disabled,
+.btn-outline-neon:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ==================== */
+/* Loading State        */
+/* ==================== */
+.btn-neon--loading,
+.btn-outline-neon--loading {
+  position: relative;
+  color: transparent;
+}
+
+.btn-neon--loading::after,
+.btn-outline-neon--loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid var(--color-neon-primary);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: php-email-form-loading 1s linear infinite;
+}

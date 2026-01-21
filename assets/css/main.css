@@ -1,0 +1,29 @@
+/**
+ * Main CSS Entry Point
+ * El Guru de los Cascos - Modernized Frontend
+ *
+ * This file imports all modular CSS files in the correct order
+ */
+
+/* ==================== */
+/* Core                 */
+/* ==================== */
+@import 'core/variables.css';
+@import 'core/accessibility.css';
+
+/* ==================== */
+/* Base & Animations    */
+/* ==================== */
+@import 'base/animations.css';
+
+/* ==================== */
+/* Components           */
+/* ==================== */
+@import 'components/navbar.css';
+@import 'components/buttons.css';
+
+/* ==================== */
+/* Original main.css    */
+/* (preserved for compatibility) */
+/* ==================== */
+@import 'main.css.backup';

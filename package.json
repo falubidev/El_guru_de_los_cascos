@@ -1,0 +1,29 @@
+{
+  "name": "el-guru-de-los-cascos",
+  "version": "2.0.0",
+  "description": "E-commerce platform for motorcycle helmets - Frontend modernization",
+  "private": true,
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "keywords": [
+    "ecommerce",
+    "motorcycle",
+    "helmets"
+  ],
+  "author": "Falubi",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "css-loader": "^6.8.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.32",
+    "postcss-loader": "^7.3.3",
+    "autoprefixer": "^10.4.16",
+    "terser-webpack-plugin": "^5.3.9",
+    "css-minimizer-webpack-plugin": "^5.0.1"
+  }
+}

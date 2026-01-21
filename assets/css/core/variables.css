@@ -1,0 +1,164 @@
+/**
+ * CSS Custom Properties (Variables)
+ * El Guru de los Cascos - Design Tokens
+ */
+
+:root {
+  /* ==================== */
+  /* Brand Colors - Neon  */
+  /* ==================== */
+  --color-neon-primary: #39ff14;
+  --color-neon-secondary: #7db749;
+  --color-neon-hover: #67913e;
+  --color-neon-text: rgb(125, 183, 73);
+
+  /* ==================== */
+  /* Background Colors    */
+  /* ==================== */
+  --bg-dark-primary: #0d0d0d;
+  --bg-dark-secondary: #030303;
+  --bg-black: #000000;
+  --bg-surface: rgba(44, 44, 44, 0.65);
+  --bg-card: #202e33;
+  --bg-overlay: rgba(0, 0, 0, 0.87);
+  --bg-nav-mobile: rgba(0, 0, 0, 0.22);
+
+  /* ==================== */
+  /* Typography           */
+  /* ==================== */
+  --font-primary: "Roboto", system-ui, -apple-system, sans-serif;
+  --font-heading: "Raleway", sans-serif;
+  --font-nav: "Poppins", sans-serif;
+  --font-special: "Orbitron", sans-serif;
+
+  /* ==================== */
+  /* Spacing Scale        */
+  /* ==================== */
+  --spacing-xs: 0.5rem;    /* 8px */
+  --spacing-sm: 1rem;      /* 16px */
+  --spacing-md: 1.5rem;    /* 24px */
+  --spacing-lg: 2rem;      /* 32px */
+  --spacing-xl: 3rem;      /* 48px */
+  --spacing-xxl: 4rem;     /* 64px */
+
+  /* ==================== */
+  /* Shadows - Neon Glow  */
+  /* ==================== */
+  --shadow-neon-sm: 0 0 8px var(--color-neon-primary);
+  --shadow-neon-md: 0 0 15px var(--color-neon-primary);
+  --shadow-neon-lg: 0 0 20px var(--color-neon-primary);
+  --shadow-neon-xl: 0 0 40px var(--color-neon-primary);
+  --shadow-neon-text-sm: 0 0 10px var(--color-neon-primary), 0 0 20px var(--color-neon-primary);
+  --shadow-neon-text-lg: 0 0 20px var(--color-neon-primary), 0 0 40px var(--color-neon-primary);
+
+  /* Green shadows */
+  --shadow-green-glow: 0 5px 15px rgba(0, 255, 0, 0.3);
+  --shadow-green-glow-md: 0 0 20px rgba(0, 255, 0, 0.6);
+
+  /* Header shadow */
+  --shadow-header: 5px 5px 30px 1px #7db749;
+
+  /* ==================== */
+  /* Borders              */
+  /* ==================== */
+  --border-neon: 1px solid var(--color-neon-primary);
+  --border-neon-thick: 3px solid var(--color-neon-primary);
+  --border-radius-sm: 10px;
+  --border-radius-md: 15px;
+  --border-radius-lg: 50px;
+
+  /* ==================== */
+  /* Transitions          */
+  /* ==================== */
+  --transition-fast: 0.3s ease;
+  --transition-medium: 0.5s ease;
+  --transition-slow: 1s ease;
+  --transition-transform: transform 0.3s ease;
+
+  /* ==================== */
+  /* Z-index Layers       */
+  /* ==================== */
+  --z-base: 1;
+  --z-dropdown: 1000;
+  --z-header: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-catalog-menu: 9999;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-loader: 9999;
+  --z-skip-content: 10000;
+
+  /* ==================== */
+  /* Breakpoints (for JS) */
+  /* ==================== */
+  --bp-xs: 0;
+  --bp-sm: 576px;
+  --bp-md: 768px;
+  --bp-lg: 992px;
+  --bp-xl: 1200px;
+  --bp-xxl: 1400px;
+
+  /* ==================== */
+  /* Layout               */
+  /* ==================== */
+  --container-max-width: 1200px;
+  --header-height: 92px;
+  --header-height-mobile: 76px;
+
+  /* ==================== */
+  /* Bootstrap Overrides  */
+  /* ==================== */
+  --bs-body-bg: var(--bg-dark-primary);
+  --bs-body-color: #ffffff;
+  --bs-primary: var(--color-neon-primary);
+  --bs-success: #28a745;
+}
+
+/* Template color variables from original */
+:root {
+  --default-font: var(--font-primary);
+  --heading-font: var(--font-heading);
+  --nav-font: var(--font-nav);
+  --background-color: #ffffff;
+  --default-color: #4e4e4e;
+  --heading-color: #0a090f;
+  --accent-color: #0078ff;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+}
+
+/* Nav Menu Colors */
+:root {
+  --nav-color: #ffffff;
+  --nav-hover-color: #ffffff;
+  --nav-mobile-background-color: var(--bg-nav-mobile);
+  --nav-dropdown-background-color: #ffffff;
+  --nav-dropdown-color: #212529;
+  --nav-dropdown-hover-color: #0078ff;
+}
+
+/* Color Presets */
+.light-background {
+  --background-color: #f9f9f9;
+  --surface-color: #ffffff;
+}
+
+.dark-background {
+  --background-color: #060606;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #252525;
+  --contrast-color: #ffffff;
+}
+
+.accent-background {
+  --background-color: #0078ff;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --accent-color: #ffffff;
+  --surface-color: #3393ff;
+  --contrast-color: #ffffff;
+}

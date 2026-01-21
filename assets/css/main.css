@@ -23,6 +23,11 @@
 @import 'components/buttons.css';
 
 /* ==================== */
+/* Pages                */
+/* ==================== */
+@import 'pages/landing.css';
+
+/* ==================== */
 /* Original main.css    */
 /* (preserved for compatibility) */
 /* ==================== */

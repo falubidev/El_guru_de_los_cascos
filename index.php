@@ -16,6 +16,18 @@
   <!-- Main Hero Landing Section -->
   <main id="main-content" class="hero-landing">
 
+    <!-- Video Background -->
+    <video class="hero-landing__video-bg" autoplay loop muted playsinline>
+      <source src="assets/videos/guru-cascos.mp4" type="video/mp4">
+      Tu navegador no soporta el elemento de video.
+    </video>
+
+    <!-- Gray Overlay -->
+    <div class="hero-landing__overlay"></div>
+
+    <!-- Diagonal Green Neon Line -->
+    <div class="hero-landing__diagonal-line"></div>
+
     <!-- Diagonal Split Container -->
     <div class="hero-landing__split">
 
@@ -173,6 +185,12 @@
       // Initialize Navbar
       if (typeof Navbar !== 'undefined') {
         new Navbar();
+      }
+
+      // Accelerate background video for dynamic effect
+      const bgVideo = document.querySelector('.hero-landing__video-bg');
+      if (bgVideo) {
+        bgVideo.playbackRate = 1.5; // 1.5x speed for more dynamic look
       }
 
       // Smooth scroll for anchor links

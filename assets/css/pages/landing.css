@@ -14,6 +14,61 @@
   flex-direction: column;
 }
 
+/* Video Background */
+.hero-landing__video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Gray Overlay sobre video */
+.hero-landing__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.6);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Línea Diagonal Verde Neón */
+.hero-landing__diagonal-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 141.42%; /* sqrt(2) * 100% para cubrir diagonal completa */
+  height: 4px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    #00FF00 10%,
+    #00FF00 90%,
+    transparent 100%
+  );
+  transform-origin: top left;
+  transform: rotate(45deg) translateY(-50%);
+  z-index: 1000;
+  pointer-events: none;
+  box-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00;
+  animation: pulse-line 3s ease-in-out infinite;
+}
+
+@keyframes pulse-line {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00;
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 15px #00FF00, 0 0 30px #00FF00, 0 0 45px #00FF00;
+  }
+}
+
 /* Diagonal Split Container */
 .hero-landing__split {
   position: relative;
@@ -21,6 +76,7 @@
   grid-template-columns: 60% 40%;
   flex: 1;
   overflow: hidden;
+  z-index: 10;
 }
 
 /* Left Side - Dark with Image */
@@ -142,7 +198,7 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-md);
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
   color: #ffffff;
   padding: var(--spacing-md) var(--spacing-xl);
@@ -151,39 +207,41 @@
   font-size: 1.1rem;
   font-weight: 600;
   transition: all var(--transition-fast);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid #00FF00;
   min-width: 280px;
   justify-content: space-between;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
 }
 
 .hero-landing__btn:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 255, 0, 0.2);
   transform: translateX(-10px);
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: #00FF00;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6), 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .hero-landing__btn-icon {
   width: 50px;
   height: 50px;
-  background-color: #000000;
+  background: linear-gradient(135deg, #00FF00 0%, #00CC00 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   transition: all var(--transition-fast);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
 }
 
 .hero-landing__btn:hover .hero-landing__btn-icon {
-  background-color: #ffffff;
-  color: #000000;
-  transform: rotate(360deg);
+  background: linear-gradient(135deg, #00FF00 0%, #00FF00 100%);
+  transform: rotate(360deg) scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
 }
 
 .hero-landing__btn-icon i {
   font-size: 1.5rem;
-  color: #ffffff;
+  color: #000000;
   transition: color var(--transition-fast);
 }
 

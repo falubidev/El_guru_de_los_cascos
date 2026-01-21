@@ -72,8 +72,9 @@
 /* Diagonal Split Container */
 .hero-landing__split {
   position: relative;
-  display: grid;
-  grid-template-columns: 60% 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 1;
   overflow: hidden;
   z-index: 10;
@@ -135,18 +136,21 @@
 /* Right Side - Vibrant Color with Content */
 .hero-landing__right {
   position: relative;
-  background: linear-gradient(135deg, var(--color-neon-secondary) 0%, var(--color-neon-primary) 100%);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--spacing-xl);
   z-index: 1;
+  width: 100%;
+  max-width: 800px;
 }
 
 .hero-landing__content {
-  max-width: 500px;
-  text-align: right;
+  max-width: 600px;
+  text-align: center;
   animation: fade-in-up 1s ease-out;
+  width: 100%;
 }
 
 @keyframes fade-in-up {
@@ -191,7 +195,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
-  align-items: flex-end;
+  align-items: center;
 }
 
 .hero-landing__btn {

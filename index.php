@@ -25,24 +25,8 @@
     <!-- Gray Overlay -->
     <div class="hero-landing__overlay"></div>
 
-    <!-- Diagonal Green Neon Line -->
-    <div class="hero-landing__diagonal-line"></div>
-
     <!-- Diagonal Split Container -->
     <div class="hero-landing__split">
-
-      <!-- Left Side: Dark with Product Image -->
-      <div class="hero-landing__left" data-aos="fade-right">
-        <div class="hero-landing__image-wrapper">
-          <!-- Main product/hero image -->
-          <img
-            src="assets/img/gurufondo-removebg-preview.png"
-            alt="El Guru de los Cascos - Experto en Cascos de Motocicleta"
-            class="hero-landing__main-image"
-            loading="eager"
-          >
-        </div>
-      </div>
 
       <!-- Right Side: Vibrant Color with Content -->
       <div class="hero-landing__right" data-aos="fade-left" data-aos-delay="200">

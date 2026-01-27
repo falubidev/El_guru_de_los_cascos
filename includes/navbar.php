@@ -1,12 +1,5 @@
 <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.php" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <img src="assets/img/gurulogo.png" alt="Logo Gurú" >
-        <!-- <h1 class="sitename">Gurú de los cascos</h1> -->
-      </a>
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-center">
 
       <nav id="navmenu" class="navmenu">
         <ul>

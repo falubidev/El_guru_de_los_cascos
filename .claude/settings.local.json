@@ -7,7 +7,10 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(tree:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(wc:*)",
+      "Bash(ls:*)",
+      "Bash(node --check:*)"
     ]
   }
 }

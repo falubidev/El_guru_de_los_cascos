@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db = 'gurudb'; // nombre db
+$db = 'guruprod'; // nombre db
 $user = 'root';
 $pass = ''; // contraseña
 try {

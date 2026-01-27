@@ -76,7 +76,7 @@
         <a href="buscascasco.php" class="video-hero__btn video-hero__btn--secondary">
           <span class="btn-bg"></span>
           <i class="bi bi-headset"></i>
-          <span>Asesoría Gratis</span>
+          <span>Asesoría Personalizada</span>
         </a>
 
         <a href="guru.php" class="video-hero__btn video-hero__btn--tertiary">
@@ -346,13 +346,13 @@
       position: relative;
       z-index: 4;
       text-align: center;
-      padding: 2rem;
+      padding: 4rem 2rem;
       max-width: 1000px;
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
 
     /* ==================== */
@@ -360,7 +360,8 @@
     /* ==================== */
     .video-hero__logo {
       position: relative;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
+      margin-top: 3rem;
       transition: transform 0.3s ease-out;
     }
 
@@ -489,7 +490,7 @@
       gap: 0.75rem;
       padding: 1.1rem 2.2rem;
       text-decoration: none;
-      border-radius: 50px;
+      border-radius: 22px;
       font-weight: 600;
       font-size: 1rem;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -587,7 +588,7 @@
       flex-direction: column;
       align-items: center;
       gap: 0.75rem;
-      margin-top: 1rem;
+      margin-top: 0;
     }
 
     .social-label {

@@ -10,7 +10,7 @@
   <div id="scan-loader">
     <div class="scan-container">
       <div class="scan-logo">
-        <img src="assets/img/gurulogo.png" alt="El Gurú de los Cascos">
+        <img src="assets/img/logos_new/logo_fondo_negro.png" alt="El Gurú de los Cascos">
         <div class="scan-line"></div>
       </div>
       <div class="scan-text">SOBRE MÍ</div>
@@ -27,18 +27,17 @@
   </button>
 
   <!-- Sidebar Overlay -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
   <!-- Main Layout -->
   <div class="cascos-layout">
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <!-- Sidebar Navigation -->
     <nav class="sidebar" id="sidebar">
       <div class="sidebar__header">
         <a href="index.php" class="sidebar__logo">
-          <img src="assets/img/gurulogo.png" alt="Logo">
+          <img src="assets/img/logos_new/logo_fondo_negro.png" alt="Logo">
         </a>
-        <span class="sidebar__brand">EL GURÚ</span>
       </div>
 
       <ul class="sidebar__menu">
@@ -66,13 +65,19 @@
             <span>Sobre Mí</span>
           </a>
         </li>
+        <li>
+          <a href="videos.php" class="sidebar__link">
+            <i class="bi bi-play-circle"></i>
+            <span>Videos</span>
+          </a>
+        </li>
       </ul>
 
       <div class="sidebar__footer">
         <div class="sidebar__social">
           <a href="https://www.youtube.com/@EL_GURU_DE_LOS_CASCOS" target="_blank"><i class="bi bi-youtube"></i></a>
-          <a href="https://www.instagram.com/el_guru_de_los_cascos" target="_blank"><i class="bi bi-instagram"></i></a>
-          <a href="https://www.tiktok.com/@el_guru_de_los_cascos" target="_blank"><i class="bi bi-tiktok"></i></a>
+          <a href="https://www.instagram.com/elgurudeloscascos/" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.tiktok.com/@elgurudeloscascos" target="_blank"><i class="bi bi-tiktok"></i></a>
         </div>
       </div>
 
@@ -125,11 +130,11 @@
                 <i class="bi bi-youtube"></i>
                 <span>YouTube</span>
               </a>
-              <a href="https://www.instagram.com/el_guru_de_los_cascos" target="_blank" class="social-btn social-btn--instagram">
+              <a href="https://www.instagram.com/elgurudeloscascos/" target="_blank" class="social-btn social-btn--instagram">
                 <i class="bi bi-instagram"></i>
                 <span>Instagram</span>
               </a>
-              <a href="https://www.tiktok.com/@el_guru_de_los_cascos" target="_blank" class="social-btn social-btn--tiktok">
+              <a href="https://www.tiktok.com/@elgurudeloscascos" target="_blank" class="social-btn social-btn--tiktok">
                 <i class="bi bi-tiktok"></i>
                 <span>TikTok</span>
               </a>
@@ -159,10 +164,10 @@
 
   </div>
 
-  <!-- Floating WhatsApp -->
-  <a href="https://wa.me/tuNumero" target="_blank" class="floating-whatsapp">
-    <i class="bi bi-whatsapp"></i>
-    <span class="whatsapp-pulse"></span>
+  <!-- Floating Guru Button -->
+  <a href="https://wa.me/573052332296?text=Hola%20Guru!%20Quiero%20preguntarte%20por%20un%20casco" target="_blank" class="floating-guru" aria-label="WhatsApp">
+    <span class="guru-float-bubble">Preguntame!</span>
+    <img src="assets/img/logos_new/logo_fondo_negro.png" alt="Gurú" class="guru-float-img">
   </a>
 
   <!-- Scripts -->
@@ -173,6 +178,7 @@
       const loader = document.getElementById('scan-loader');
 
       setTimeout(() => {
+        document.body.classList.add('loaded');
         loader.classList.add('done');
         setTimeout(() => loader.style.display = 'none', 500);
       }, 2000);
@@ -480,7 +486,7 @@
     }
 
     .sidebar__logo img {
-      width: 45px;
+      width: 70px;
       filter: drop-shadow(0 0 15px var(--neon-glow));
       transition: transform 0.3s ease;
     }
@@ -773,40 +779,65 @@
       pointer-events: none;
     }
 
-    /* WhatsApp */
-    .floating-whatsapp {
+    /* Floating Guru */
+    .floating-guru {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 55px;
-      height: 55px;
-      background: linear-gradient(135deg, #25d366, #128c7e);
-      color: var(--white);
-      border-radius: 50%;
+      bottom: 25px;
+      right: 25px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
       text-decoration: none;
-      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
       z-index: 99;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease;
+      animation: guruFloatBounce 3s ease-in-out infinite;
     }
-
-    .floating-whatsapp:hover { transform: scale(1.1); color: var(--white); }
-
-    .whatsapp-pulse {
+    .floating-guru:hover {
+      transform: scale(1.1) translateY(-5px);
+      animation: none;
+    }
+    .guru-float-img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 15px var(--neon-glow)) drop-shadow(0 0 30px rgba(57, 255, 20, 0.2));
+      transition: filter 0.3s ease;
+    }
+    .floating-guru:hover .guru-float-img {
+      filter: drop-shadow(0 0 20px var(--neon-glow)) drop-shadow(0 0 40px rgba(57, 255, 20, 0.4));
+    }
+    .guru-float-bubble {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: rgba(37, 211, 102, 0.4);
-      animation: whatsappPulse 2s ease-out infinite;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 6px;
+      padding: 0.4rem 0.8rem;
+      background: var(--neon-primary);
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 800;
+      white-space: nowrap;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(57, 255, 20, 0.4);
+      animation: bubbleFloat 2s ease-in-out infinite;
     }
-
-    @keyframes whatsappPulse {
-      0% { transform: scale(1); opacity: 0.6; }
-      100% { transform: scale(1.8); opacity: 0; }
+    .guru-float-bubble::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--neon-primary);
+    }
+    @keyframes guruFloatBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes bubbleFloat {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-4px); }
     }
 
     /* Responsive - Tablet */
@@ -872,7 +903,9 @@
       .guru-video { height: 35vh; }
 
       .decor { width: 40px; height: 40px; }
-      .floating-whatsapp { width: 48px; height: 48px; font-size: 1.4rem; }
+      .floating-guru { bottom: 15px; right: 15px; }
+      .guru-float-img { width: 55px; height: 55px; }
+      .guru-float-bubble { font-size: 0.6rem; padding: 0.3rem 0.6rem; }
     }
 
     /* Responsive - Small Mobile */

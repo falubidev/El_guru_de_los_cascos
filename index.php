@@ -34,20 +34,126 @@
       <span class="particle"></span>
     </div>
 
-    <!-- Content Container -->
+    <!-- Video Wheel - Posicionado absoluto a la izquierda -->
+    <div class="video-wheel-float" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">
+      <div class="video-wheel-wrapper">
+        <div class="video-wheel" id="videoWheel">
+          <div class="video-wheel__item" data-index="0">
+            <a href="https://www.instagram.com/reel/DQs6aFpDqO2/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" class="video-card">
+              <img src="assets/img/instagram/insta1.png" alt="Instagram">
+              <div class="video-card__overlay">
+                <i class="bi bi-instagram"></i>
+                <span>Ver en Instagram</span>
+              </div>
+            </a>
+          </div>
+          <div class="video-wheel__item" data-index="1">
+            <a href="https://www.instagram.com/reel/DQs6aFpDqO2/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" class="video-card">
+              <img src="assets/img/instagram/insta2.png" alt="Instagram">
+              <div class="video-card__overlay">
+                <i class="bi bi-instagram"></i>
+                <span>Ver en Instagram</span>
+              </div>
+            </a>
+          </div>
+          <div class="video-wheel__item" data-index="2">
+            <a href="https://www.instagram.com/reel/DQs6aFpDqO2/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" class="video-card">
+              <img src="assets/img/instagram/insta3.png" alt="Instagram">
+              <div class="video-card__overlay">
+                <i class="bi bi-instagram"></i>
+                <span>Ver en Instagram</span>
+              </div>
+            </a>
+          </div>
+          <div class="video-wheel__item" data-index="3">
+            <a href="https://www.instagram.com/reel/DQs6aFpDqO2/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" class="video-card">
+              <img src="assets/img/instagram/insta4.png" alt="Instagram">
+              <div class="video-card__overlay">
+                <i class="bi bi-instagram"></i>
+                <span>Ver en Instagram</span>
+              </div>
+            </a>
+          </div>
+          <div class="video-wheel__item" data-index="4">
+            <a href="https://www.instagram.com/reel/DQs6aFpDqO2/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" class="video-card">
+              <img src="assets/img/instagram/insta5.png" alt="Instagram">
+              <div class="video-card__overlay">
+                <i class="bi bi-instagram"></i>
+                <span>Ver en Instagram</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Wheel - Posicionado absoluto a la derecha (espejo) -->
+    <div class="video-wheel-float video-wheel-float--right" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
+      <div class="video-wheel-wrapper">
+        <div class="video-wheel" id="videoWheelRight">
+          <div class="video-wheel__item" data-index="0">
+            <a href="https://www.instagram.com/reel/DQs6aFpDqO2/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" class="video-card">
+              <img src="assets/img/instagram/insta5.png" alt="Instagram">
+              <div class="video-card__overlay">
+                <i class="bi bi-instagram"></i>
+                <span>Ver en Instagram</span>
+              </div>
+            </a>
+          </div>
+          <div class="video-wheel__item" data-index="1">
+            <a href="https://www.instagram.com/reel/DQs6aFpDqO2/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" class="video-card">
+              <img src="assets/img/instagram/insta6.jpg" alt="Instagram">
+              <div class="video-card__overlay">
+                <i class="bi bi-instagram"></i>
+                <span>Ver en Instagram</span>
+              </div>
+            </a>
+          </div>
+          <div class="video-wheel__item" data-index="2">
+            <a href="https://www.instagram.com/reel/DQs6aFpDqO2/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" class="video-card">
+              <img src="assets/img/instagram/insta7.jpg" alt="Instagram">
+              <div class="video-card__overlay">
+                <i class="bi bi-instagram"></i>
+                <span>Ver en Instagram</span>
+              </div>
+            </a>
+          </div>
+          <div class="video-wheel__item" data-index="3">
+            <a href="https://www.instagram.com/reel/DQs6aFpDqO2/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" class="video-card">
+              <img src="assets/img/instagram/insta8.png" alt="Instagram">
+              <div class="video-card__overlay">
+                <i class="bi bi-instagram"></i>
+                <span>Ver en Instagram</span>
+              </div>
+            </a>
+          </div>
+          <div class="video-wheel__item" data-index="4">
+            <a href="https://www.instagram.com/reel/DQs6aFpDqO2/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" class="video-card">
+              <img src="assets/img/instagram/insta9.png" alt="Instagram">
+              <div class="video-card__overlay">
+                <i class="bi bi-instagram"></i>
+                <span>Ver en Instagram</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido centrado -->
     <div class="video-hero__content">
 
       <!-- Logo with Glow Ring -->
       <div class="video-hero__logo" data-aos="zoom-in" data-aos-duration="800">
         <div class="logo-ring"></div>
         <div class="logo-ring logo-ring--delay"></div>
-        <img src="assets/img/gurulogo.png" alt="El Guru de los Cascos">
+        <img src="assets/img/logos_new/logo_fondo_negro.png" alt="El Guru de los Cascos">
       </div>
 
       <!-- Title with Gradient -->
       <h1 class="video-hero__title" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-        <span class="title-line">El Gurú</span>
-        <span class="title-line title-line--accent">de los Cascos</span>
+        <span class="title-line title-line--small">El Gurú</span>
+        <span class="title-line title-line--accent title-line--small">de los Cascos</span>
       </h1>
 
       <!-- Subtitle -->
@@ -94,10 +200,10 @@
           <a href="https://www.youtube.com/@EL_GURU_DE_LOS_CASCOS" target="_blank" aria-label="YouTube" class="social-icon social-icon--youtube">
             <i class="bi bi-youtube"></i>
           </a>
-          <a href="https://www.instagram.com/el_guru_de_los_cascos?igsh=MWZudTBkc2dud21saA==" target="_blank" aria-label="Instagram" class="social-icon social-icon--instagram">
+          <a href="https://www.instagram.com/elgurudeloscascos/" target="_blank" aria-label="Instagram" class="social-icon social-icon--instagram">
             <i class="bi bi-instagram"></i>
           </a>
-          <a href="https://www.tiktok.com/@el_guru_de_los_cascos?_t=8mNTpgPyAPW&_r=1" target="_blank" aria-label="TikTok" class="social-icon social-icon--tiktok">
+          <a href="https://www.tiktok.com/@elgurudeloscascos" target="_blank" aria-label="TikTok" class="social-icon social-icon--tiktok">
             <i class="bi bi-tiktok"></i>
           </a>
         </div>
@@ -105,20 +211,12 @@
 
     </div>
 
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="1000">
-      <span class="scroll-text">Explora</span>
-      <div class="scroll-mouse">
-        <span class="scroll-wheel"></span>
-      </div>
-    </div>
-
   </div>
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/tuNumero" target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
-    <i class="bi bi-whatsapp"></i>
-    <span class="whatsapp-pulse"></span>
+  <!-- Floating Guru Button -->
+  <a href="https://wa.me/573052332296?text=Hola%20Guru!%20Quiero%20preguntarte%20por%20un%20casco" target="_blank" class="floating-guru" aria-label="WhatsApp">
+    <span class="guru-float-bubble">Pregunta por el tuyo!</span>
+    <img src="assets/img/logos_new/logo_fondo_negro.png" alt="Gurú" class="guru-float-img">
   </a>
 
   <!-- Vendor JS Files -->
@@ -192,6 +290,198 @@
           });
         });
       }
+
+      // ==================== //
+      // Video Wheel Carousel  //
+      // ==================== //
+      const wheel = document.getElementById('videoWheel');
+      const items = wheel ? wheel.querySelectorAll('.video-wheel__item') : [];
+      const totalItems = items.length;
+
+      if (wheel && totalItems > 0) {
+        let currentIndex = 0;
+        let isAnimating = false;
+        let autoplayTimer = null;
+        const angleStep = 360 / totalItems;
+        // Radius of the wheel (distance from center)
+        const radius = 250;
+
+        function positionItems() {
+          items.forEach((item, i) => {
+            // Calculate angle offset from current
+            let offset = i - currentIndex;
+            // Normalize to shortest rotation path
+            if (offset > totalItems / 2) offset -= totalItems;
+            if (offset < -totalItems / 2) offset += totalItems;
+
+            const angle = offset * angleStep;
+            const radian = (angle * Math.PI) / 180;
+
+            // Vertical wheel: Y position follows sin, Z follows cos
+            const y = Math.sin(radian) * radius;
+            const z = Math.cos(radian) * radius - radius;
+
+            // Scale & opacity based on position (front = big, back = small)
+            const normZ = (z + radius) / (2 * radius); // 0 (back) to 1 (front)
+            const scale = 0.4 + normZ * 0.6;
+            const opacity = 0.15 + normZ * 0.85;
+
+            // Blur based on distance from center: active = 0, others = up to 3px
+            const blurAmount = Math.abs(offset) === 0 ? 0 : Math.min(Math.abs(offset) * 1.5, 3);
+
+            item.style.transform = `translate(-50%, -50%) translateY(${y}px) translateZ(${z}px) scale(${scale})`;
+            item.style.opacity = opacity;
+            item.style.zIndex = Math.round(normZ * 100);
+            item.style.filter = blurAmount > 0 ? `blur(${blurAmount}px)` : 'none';
+
+            // Mark active
+            if (offset === 0) {
+              item.classList.add('is-active');
+            } else {
+              item.classList.remove('is-active');
+            }
+          });
+        }
+
+        function goTo(index) {
+          if (isAnimating) return;
+          isAnimating = true;
+          currentIndex = ((index % totalItems) + totalItems) % totalItems;
+          positionItems();
+          setTimeout(() => { isAnimating = false; }, 600);
+          resetAutoplay();
+        }
+
+        function next() { goTo(currentIndex + 1); }
+        function prev() { goTo(currentIndex - 1); }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowUp') { e.preventDefault(); prev(); }
+          if (e.key === 'ArrowDown') { e.preventDefault(); next(); }
+        });
+
+        // Mouse wheel on the carousel
+        const wheelWrapper = document.querySelector('.video-wheel-wrapper');
+        wheelWrapper.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          if (e.deltaY > 0) next();
+          else prev();
+        }, { passive: false });
+
+        // Touch support
+        let touchStartY = 0;
+        wheelWrapper.addEventListener('touchstart', (e) => {
+          touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+        wheelWrapper.addEventListener('touchend', (e) => {
+          const diff = touchStartY - e.changedTouches[0].clientY;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) next();
+            else prev();
+          }
+        }, { passive: true });
+
+        // Autoplay
+        function resetAutoplay() {
+          clearInterval(autoplayTimer);
+          autoplayTimer = setInterval(next, 3500);
+        }
+
+        // Pause autoplay on hover
+        wheelWrapper.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
+        wheelWrapper.addEventListener('mouseleave', resetAutoplay);
+
+        // Init
+        positionItems();
+        resetAutoplay();
+      }
+
+      // ============================== //
+      // Video Wheel Carousel - RIGHT    //
+      // ============================== //
+      const wheelR = document.getElementById('videoWheelRight');
+      const itemsR = wheelR ? wheelR.querySelectorAll('.video-wheel__item') : [];
+      const totalItemsR = itemsR.length;
+
+      if (wheelR && totalItemsR > 0) {
+        let currentIndexR = 2; // Start offset for variety
+        let isAnimatingR = false;
+        let autoplayTimerR = null;
+        const angleStepR = 360 / totalItemsR;
+        const radiusR = 250;
+
+        function positionItemsR() {
+          itemsR.forEach((item, i) => {
+            let offset = i - currentIndexR;
+            if (offset > totalItemsR / 2) offset -= totalItemsR;
+            if (offset < -totalItemsR / 2) offset += totalItemsR;
+
+            const angle = offset * angleStepR;
+            const radian = (angle * Math.PI) / 180;
+            const y = Math.sin(radian) * radiusR;
+            const z = Math.cos(radian) * radiusR - radiusR;
+            const normZ = (z + radiusR) / (2 * radiusR);
+            const scale = 0.4 + normZ * 0.6;
+            const opacity = 0.15 + normZ * 0.85;
+
+            const blurAmountR = Math.abs(offset) === 0 ? 0 : Math.min(Math.abs(offset) * 1.5, 3);
+
+            item.style.transform = `translate(-50%, -50%) translateY(${y}px) translateZ(${z}px) scale(${scale})`;
+            item.style.opacity = opacity;
+            item.style.zIndex = Math.round(normZ * 100);
+            item.style.filter = blurAmountR > 0 ? `blur(${blurAmountR}px)` : 'none';
+
+            if (offset === 0) {
+              item.classList.add('is-active');
+            } else {
+              item.classList.remove('is-active');
+            }
+          });
+        }
+
+        function goToR(index) {
+          if (isAnimatingR) return;
+          isAnimatingR = true;
+          currentIndexR = ((index % totalItemsR) + totalItemsR) % totalItemsR;
+          positionItemsR();
+          setTimeout(() => { isAnimatingR = false; }, 600);
+          resetAutoplayR();
+        }
+
+        function nextR() { goToR(currentIndexR + 1); }
+        function prevR() { goToR(currentIndexR - 1); }
+
+        const wheelWrapperR = wheelR.closest('.video-wheel-wrapper');
+        wheelWrapperR.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          if (e.deltaY > 0) nextR();
+          else prevR();
+        }, { passive: false });
+
+        let touchStartYR = 0;
+        wheelWrapperR.addEventListener('touchstart', (e) => {
+          touchStartYR = e.touches[0].clientY;
+        }, { passive: true });
+        wheelWrapperR.addEventListener('touchend', (e) => {
+          const diff = touchStartYR - e.changedTouches[0].clientY;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) nextR();
+            else prevR();
+          }
+        }, { passive: true });
+
+        function resetAutoplayR() {
+          clearInterval(autoplayTimerR);
+          autoplayTimerR = setInterval(nextR, 4200); // Slightly different speed
+        }
+
+        wheelWrapperR.addEventListener('mouseenter', () => clearInterval(autoplayTimerR));
+        wheelWrapperR.addEventListener('mouseleave', resetAutoplayR);
+
+        positionItemsR();
+        resetAutoplayR();
+      }
     });
   </script>
 
@@ -238,6 +528,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
     .video-hero__video {
@@ -340,19 +631,37 @@
     }
 
     /* ==================== */
-    /* Content Container */
+    /* Video Wheel Flotante */
+    /* ==================== */
+    .video-wheel-float {
+      position: absolute;
+      left: 40px;
+      top: 0;
+      height: 100%;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+    }
+
+    .video-wheel-float--right {
+      left: auto;
+      right: 40px;
+    }
+
+    /* ==================== */
+    /* Content Container - Centrado real */
     /* ==================== */
     .video-hero__content {
       position: relative;
       z-index: 4;
-      text-align: center;
-      padding: 4rem 2rem;
-      max-width: 1000px;
       width: 100%;
+      max-width: 1000px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.25rem;
+      text-align: center;
+      gap: 0.9rem;
+      padding: 1rem 2rem;
     }
 
     /* ==================== */
@@ -360,8 +669,8 @@
     /* ==================== */
     .video-hero__logo {
       position: relative;
-      margin-bottom: 0.5rem;
-      margin-top: 3rem;
+      margin-bottom: 0.25rem;
+      margin-top: 1rem;
       transition: transform 0.3s ease-out;
     }
 
@@ -370,8 +679,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 180px;
-      height: 180px;
+      width: 250px;
+      height: 250px;
       border: 2px solid var(--neon-primary);
       border-radius: 50%;
       opacity: 0.3;
@@ -379,8 +688,8 @@
     }
 
     .logo-ring--delay {
-      width: 220px;
-      height: 220px;
+      width: 300px;
+      height: 300px;
       animation-delay: 1.5s;
       border-style: dashed;
     }
@@ -392,11 +701,16 @@
 
     .video-hero__logo img {
       position: relative;
-      width: 130px;
+      width: 200px;
       height: auto;
       filter: drop-shadow(0 0 30px var(--neon-glow)) drop-shadow(0 0 60px rgba(57, 255, 20, 0.3));
-      animation: logoFloat 4s ease-in-out infinite;
+      animation: logoFloat 4s ease-in-out infinite, logoShimmer 3s ease-in-out infinite;
       z-index: 2;
+    }
+
+    @keyframes logoShimmer {
+      0%, 100% { filter: drop-shadow(0 0 30px var(--neon-glow)) drop-shadow(0 0 60px rgba(57, 255, 20, 0.3)) brightness(1); }
+      50% { filter: drop-shadow(0 0 40px var(--neon-glow)) drop-shadow(0 0 80px rgba(57, 255, 20, 0.5)) brightness(1.15); }
     }
 
     @keyframes logoFloat {
@@ -423,6 +737,11 @@
       letter-spacing: 3px;
       line-height: 1.1;
       text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .title-line--small {
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      letter-spacing: 2px;
     }
 
     .title-line--accent {
@@ -641,107 +960,103 @@
       box-shadow: 0 8px 30px rgba(0, 242, 234, 0.4);
     }
 
+
     /* ==================== */
-    /* Scroll Indicator */
+    /* Floating Guru Button */
     /* ==================== */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
+    .floating-guru {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
-      z-index: 5;
-      cursor: pointer;
+      text-decoration: none;
+      z-index: 99;
+      transition: transform 0.3s ease;
+      animation: guruFloatBounce 3s ease-in-out infinite;
     }
 
-    .scroll-text {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: rgba(255, 255, 255, 0.5);
+    .floating-guru:hover {
+      transform: scale(1.1) translateY(-5px);
+      animation: none;
     }
 
-    .scroll-mouse {
-      width: 26px;
-      height: 40px;
-      border: 2px solid rgba(255, 255, 255, 0.4);
-      border-radius: 20px;
-      display: flex;
-      justify-content: center;
-      padding-top: 8px;
-    }
-
-    .scroll-wheel {
-      width: 4px;
-      height: 8px;
-      background: var(--neon-primary);
-      border-radius: 4px;
-      animation: scrollWheel 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollWheel {
-      0%, 100% { transform: translateY(0); opacity: 1; }
-      50% { transform: translateY(10px); opacity: 0.3; }
-    }
-
-    /* ==================== */
-    /* Floating WhatsApp */
-    /* ==================== */
-    .floating-whatsapp {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
+    .guru-float-img {
       width: 60px;
       height: 60px;
-      background: linear-gradient(135deg, #25d366, #128c7e);
-      color: var(--white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      text-decoration: none;
-      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
-      z-index: 99;
-      transition: all 0.3s ease;
+      object-fit: contain;
+      filter: drop-shadow(0 0 15px var(--neon-glow)) drop-shadow(0 0 30px rgba(57, 255, 20, 0.2));
+      transition: filter 0.3s ease;
     }
 
-    .floating-whatsapp:hover {
-      transform: scale(1.1) translateY(-3px);
-      box-shadow: 0 12px 40px rgba(37, 211, 102, 0.6);
+    .floating-guru:hover .guru-float-img {
+      filter: drop-shadow(0 0 20px var(--neon-glow)) drop-shadow(0 0 40px rgba(57, 255, 20, 0.4));
     }
 
-    .whatsapp-pulse {
+    .guru-float-bubble {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: rgba(37, 211, 102, 0.4);
-      animation: whatsappPulse 2s ease-out infinite;
+      bottom: 100%;
+      right: 0;
+      margin-bottom: 6px;
+      padding: 0.4rem 0.8rem;
+      background: var(--neon-primary);
+      color: #000;
+      font-size: 0.75rem;
+      font-weight: 800;
+      white-space: nowrap;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(57, 255, 20, 0.4);
+      animation: bubbleFloat 2s ease-in-out infinite;
     }
 
-    @keyframes whatsappPulse {
-      0% { transform: scale(1); opacity: 0.6; }
-      100% { transform: scale(1.8); opacity: 0; }
+    .guru-float-bubble::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      right: 20px;
+      border: 6px solid transparent;
+      border-top-color: var(--neon-primary);
+    }
+
+    @keyframes bubbleFloat {
+      0%, 100% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(-4px); opacity: 0.9; }
+    }
+
+    @keyframes guruFloatBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
     }
 
     /* ==================== */
     /* RESPONSIVE - TABLET */
     /* ==================== */
+    @media (max-width: 1200px) {
+      .video-wheel-float { left: 20px; }
+      .video-wheel-float--right { left: auto; right: 20px; }
+      .video-wheel-wrapper { width: 200px; }
+      .video-wheel, .video-wheel__item { width: 180px; }
+    }
+
     @media (max-width: 968px) {
       .decor { width: 80px; height: 80px; }
 
+      .video-wheel-float { left: 5px; }
+      .video-wheel-float--right { left: auto; right: 5px; }
+      .video-wheel-wrapper { width: 170px; }
+      .video-wheel, .video-wheel__item { width: 150px; }
+
       .logo-ring { width: 140px; height: 140px; }
       .logo-ring--delay { width: 170px; height: 170px; }
-      .video-hero__logo img { width: 100px; }
+      .video-hero__logo img { width: 90px; }
 
-      .title-line { font-size: 2.5rem; letter-spacing: 2px; }
+      .title-line { font-size: 2rem; letter-spacing: 2px; }
 
-      .video-hero__buttons { gap: 1rem; }
-      .video-hero__btn { padding: 1rem 1.8rem; font-size: 0.95rem; }
+      .video-hero__buttons { gap: 0.8rem; }
+      .video-hero__btn { padding: 0.85rem 1.5rem; font-size: 0.9rem; }
+
+      .social-icon { width: 44px; height: 44px; font-size: 1.1rem; }
     }
 
     /* ==================== */
@@ -755,26 +1070,26 @@
       .decor--top-right, .decor--bottom-right { right: 15px; }
 
       .particles { display: none; }
-      .scroll-indicator { display: none; }
+
+      .video-wheel-float { display: none; }
 
       .video-hero__content {
+        gap: 0.7rem;
         padding: 1rem;
-        gap: 1rem;
       }
 
-      .video-hero__logo { margin-bottom: 0.5rem; }
-      .logo-ring { width: 100px; height: 100px; }
-      .logo-ring--delay { width: 120px; height: 120px; }
-      .video-hero__logo img { width: 70px; }
+      .video-hero__logo { margin-bottom: 0.25rem; margin-top: 0.5rem; }
+      .logo-ring { width: 140px; height: 140px; }
+      .logo-ring--delay { width: 170px; height: 170px; }
+      .video-hero__logo img { width: 100px; }
 
       .title-line { font-size: 1.8rem; letter-spacing: 1px; }
 
-      .video-hero__subtitle { font-size: 0.9rem; gap: 0.5rem; }
-      .subtitle-icon { display: none; }
+      .video-hero__subtitle { font-size: 0.9rem; }
 
       .trust-badge {
-        padding: 0.5rem 1rem;
-        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.7rem;
         flex-wrap: wrap;
         justify-content: center;
       }
@@ -783,98 +1098,125 @@
         flex-direction: column;
         width: 100%;
         max-width: 280px;
-        gap: 0.75rem;
+        gap: 0.6rem;
       }
 
       .video-hero__btn {
         width: 100%;
-        padding: 0.9rem 1.5rem;
-        font-size: 0.9rem;
+        padding: 0.8rem 1.4rem;
+        font-size: 0.88rem;
         justify-content: center;
       }
 
       .btn-arrow { display: none; }
 
-      .social-label { font-size: 0.7rem; letter-spacing: 2px; }
-      .social-icons { gap: 0.75rem; }
-      .social-icon { width: 44px; height: 44px; font-size: 1.1rem; }
-
-      .floating-whatsapp {
-        width: 52px;
-        height: 52px;
-        font-size: 1.5rem;
+      .video-hero__social {
+        position: fixed;
         bottom: 20px;
-        right: 20px;
+        left: 0;
+        right: 0;
+        margin-top: auto;
+        z-index: 10;
       }
+      .social-label { font-size: 0.75rem; letter-spacing: 3px; }
+      .social-icons { gap: 1rem; }
+      .social-icon { width: 50px; height: 50px; font-size: 1.3rem; }
+
+      .floating-guru { bottom: 15px; right: 10px; }
+      .guru-float-img { width: 45px; height: 45px; }
+      .guru-float-bubble { font-size: 0.6rem; padding: 0.3rem 0.6rem; right: -5px; }
     }
 
     /* ==================== */
     /* RESPONSIVE - SMALL MOBILE */
     /* ==================== */
     @media (max-width: 480px) {
-      .decor { width: 45px; height: 45px; }
+      .decor { width: 40px; height: 40px; }
       .decor--top-left, .decor--top-right { top: 10px; }
       .decor--bottom-left, .decor--bottom-right { bottom: 10px; }
       .decor--top-left, .decor--bottom-left { left: 10px; }
       .decor--top-right, .decor--bottom-right { right: 10px; }
 
-      .video-hero__content { gap: 0.8rem; }
+      .video-hero__content { gap: 0.5rem; padding: 0.5rem 1rem; }
 
-      .logo-ring { width: 80px; height: 80px; }
-      .logo-ring--delay { width: 100px; height: 100px; }
-      .video-hero__logo img { width: 55px; }
+      .video-hero__logo { margin-top: 0; margin-bottom: 0; }
+      .logo-ring { width: 120px; height: 120px; }
+      .logo-ring--delay { width: 145px; height: 145px; }
+      .video-hero__logo img { width: 80px; }
 
-      .title-line { font-size: 1.5rem; }
+      .title-line { font-size: 1.4rem; }
 
-      .video-hero__subtitle { font-size: 0.8rem; }
+      .video-hero__subtitle { font-size: 0.75rem; }
 
-      .trust-badge { font-size: 0.7rem; padding: 0.4rem 0.8rem; }
+      .trust-badge { font-size: 0.65rem; padding: 0.3rem 0.7rem; }
 
-      .video-hero__btn { padding: 0.8rem 1.2rem; font-size: 0.85rem; }
+      .video-hero__btn { padding: 0.7rem 1rem; font-size: 0.8rem; }
+      .video-hero__buttons { gap: 0.5rem; }
 
-      .social-icon { width: 40px; height: 40px; font-size: 1rem; }
+      .video-hero__social { bottom: 15px; }
+      .social-label { font-size: 0.7rem; }
+      .social-icons { gap: 0.9rem; }
+      .social-icon { width: 46px; height: 46px; font-size: 1.2rem; }
     }
 
     /* ==================== */
     /* RESPONSIVE - VERY SMALL */
     /* ==================== */
     @media (max-width: 360px) {
-      .decor { width: 35px; height: 35px; opacity: 0.3; }
+      .decor { display: none; }
 
-      .video-hero__logo img { width: 45px; }
-      .logo-ring, .logo-ring--delay { display: none; }
+      .video-hero__logo img { width: 70px; }
 
-      .title-line { font-size: 1.3rem; }
+      .title-line { font-size: 1.2rem; }
 
       .trust-badge { display: none; }
 
-      .video-hero__btn { padding: 0.7rem 1rem; font-size: 0.8rem; }
+      .video-hero__btn { padding: 0.6rem 0.9rem; font-size: 0.75rem; }
+
+      .video-hero__social { bottom: 12px; }
+      .social-label { font-size: 0.65rem; }
+      .social-icons { gap: 0.8rem; }
+      .social-icon { width: 42px; height: 42px; font-size: 1.1rem; }
     }
 
     /* ==================== */
     /* RESPONSIVE - SHORT HEIGHT */
     /* ==================== */
     @media (max-height: 700px) {
-      .decor { width: 50px; height: 50px; }
+      .decor { width: 40px; height: 40px; }
 
-      .video-hero__content { gap: 0.8rem; }
-      .video-hero__logo { margin-bottom: 0; }
+      .video-hero__content { gap: 0.4rem; padding: 0.5rem 1rem; }
+      .video-hero__logo { margin-bottom: 0; margin-top: 0; }
       .logo-ring, .logo-ring--delay { display: none; }
-      .video-hero__logo img { width: 60px; }
-      .title-line { font-size: 1.8rem; }
+      .video-hero__logo img { width: 70px; }
+      .title-line { font-size: 1.5rem; }
       .trust-badge { display: none; }
-      .scroll-indicator { display: none; }
+      .video-hero__subtitle { font-size: 0.8rem; }
+      .video-hero__btn { padding: 0.65rem 1.2rem; font-size: 0.82rem; }
+      .video-hero__buttons { gap: 0.5rem; }
+
+      .video-hero__social { position: fixed; bottom: 12px; left: 0; right: 0; z-index: 10; }
+      .social-label { font-size: 0.6rem; }
+      .social-icon { width: 36px; height: 36px; font-size: 0.9rem; }
+
+      .video-wheel-wrapper { height: 80vh; }
+      .video-wheel, .video-wheel__item { width: 160px; }
     }
 
     @media (max-height: 550px) {
-      .decor { width: 40px; height: 40px; opacity: 0.3; }
+      .decor { display: none; }
 
-      .video-hero__logo img { width: 45px; }
-      .title-line { font-size: 1.4rem; }
-      .video-hero__subtitle { font-size: 0.8rem; }
-      .video-hero__buttons { flex-direction: row; flex-wrap: wrap; max-width: none; }
-      .video-hero__btn { width: auto; padding: 0.6rem 1rem; font-size: 0.8rem; }
-      .social-icon { width: 36px; height: 36px; font-size: 0.95rem; }
+      .video-hero__content { gap: 0.3rem; }
+      .video-hero__logo img { width: 55px; }
+      .title-line { font-size: 1.2rem; }
+      .video-hero__subtitle { font-size: 0.7rem; }
+      .video-hero__buttons { flex-direction: row; flex-wrap: wrap; max-width: none; gap: 0.4rem; }
+      .video-hero__btn { width: auto; padding: 0.5rem 0.8rem; font-size: 0.72rem; }
+      .video-hero__social { position: fixed; bottom: 8px; left: 0; right: 0; z-index: 10; }
+      .social-label { font-size: 0.55rem; }
+      .social-icon { width: 30px; height: 30px; font-size: 0.8rem; }
+      .social-icons { gap: 0.4rem; }
+      .video-wheel-float { display: none; }
     }
 
     /* ==================== */
@@ -894,6 +1236,118 @@
       outline: 3px solid var(--neon-primary);
       outline-offset: 3px;
     }
+
+    /* ==================== */
+    /* Video Wheel (inline) */
+    /* ==================== */
+    .video-wheel-wrapper {
+      position: relative;
+      width: 240px;
+      height: 90vh;
+      perspective: 1000px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-wheel {
+      position: relative;
+      width: 210px;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .video-wheel__item {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 210px;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                  opacity 0.6s ease,
+                  filter 0.6s ease;
+    }
+
+    /* 9:16 vertical video card */
+    .video-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      transition: box-shadow 0.4s ease;
+    }
+
+    .video-wheel__item.is-active .video-card {
+      box-shadow:
+        0 0 25px rgba(57, 255, 20, 0.2),
+        0 15px 50px rgba(0, 0, 0, 0.8);
+    }
+
+    .video-card video,
+    .video-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      pointer-events: none;
+      display: block;
+      filter: saturate(1.2) contrast(1.05) brightness(1.05);
+    }
+
+    /* Overlay Instagram */
+    .video-card__overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 35%;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        transparent 100%
+      );
+      border-radius: 0 0 14px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 12%;
+      gap: 0.4rem;
+      transition: height 0.3s ease, opacity 0.3s ease;
+      z-index: 2;
+    }
+
+    .video-card:hover .video-card__overlay {
+      height: 45%;
+    }
+
+    .video-card__overlay i {
+      font-size: 1.6rem;
+      color: #fff;
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 10px rgba(225, 48, 108, 0.9));
+    }
+
+    .video-card__overlay span {
+      font-size: 0.6rem;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
+      padding: 3px 10px;
+      border-radius: 20px;
+      -webkit-text-fill-color: #fff;
+    }
+
   </style>
 
 </body>

@@ -1,4 +1,5 @@
 <!-- flotante.php -->
+<?php require_once 'admin/db.php'; ?>
 <style>
   @keyframes levitar {
     0% { transform: translateY(0); }
@@ -13,7 +14,7 @@
 
 <!-- Botón flotante -->
 <div id="dudaBot" class="position-fixed end-0 bottom-0 me-3 mb-3 text-center">
-  <img src="assets/img/gurulogo.png" alt="Duda" class="mb-1" style="height: 60px; animation: levitar 2s ease-in-out infinite;">
+  <img src="assets/img/logos_new/logo_fondo_negro.png" alt="Duda" class="mb-1" style="height: 60px; animation: levitar 2s ease-in-out infinite;">
   <br>
   <button class="btn btn-outline-success btn-sm text-white" onclick="new bootstrap.Modal(document.getElementById('modalDudas')).show()" style="background-color: rgba(0,255,128,0.2); border-color: #80ff80;">
     ¿Tienes dudas? Pregúntame
@@ -30,6 +31,7 @@
       </div>
       <div class="modal-body">
         <textarea id="mensajeDuda" class="form-control mb-3" placeholder="Escribe tu duda aquí..." rows="4"></textarea>
+        <div id="recaptchaDuda" class="g-recaptcha mb-3" data-sitekey="<?= RECAPTCHA_SITE_KEY ?>"></div>
         <button class="btn btn-success w-100" onclick="enviarDuda()">Enviar</button>
       </div>
     </div>
@@ -43,8 +45,16 @@ function enviarDuda() {
     return;
   }
 
+  const recaptchaVal = document.querySelector('#recaptchaDuda [name="g-recaptcha-response"]') ||
+                       document.querySelector('#modalDudas [name="g-recaptcha-response"]');
+  if (!recaptchaVal || !recaptchaVal.value) {
+    alert('Por favor completa el reCAPTCHA.');
+    return;
+  }
+
   const formData = new FormData();
   formData.append('mensaje', mensaje);
+  formData.append('g-recaptcha-response', recaptchaVal.value);
 
   fetch('guardar_formulario.php', {
     method: 'POST',
@@ -52,11 +62,15 @@ function enviarDuda() {
   })
   .then(resp => resp.ok ? resp.text() : Promise.reject('Error al enviar'))
   .then(() => {
-    alert('✅ Tu duda ha sido enviada. ¡Gracias!');
+    alert('Tu duda ha sido enviada. Gracias!');
     document.getElementById('mensajeDuda').value = '';
+    if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
     bootstrap.Modal.getInstance(document.getElementById('modalDudas')).hide();
   })
-  .catch(error => alert('❌ Hubo un error: ' + error));
+  .catch(error => {
+    alert('Hubo un error: ' + error);
+    if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
+  });
 }
 </script>
 <script>

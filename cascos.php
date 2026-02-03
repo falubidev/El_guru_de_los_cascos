@@ -6,6 +6,23 @@
 </head>
 <body class="cascos-page">
 
+  <!-- Critical: ocultar contenido hasta que el loader termine -->
+  <style>
+    #explosion-loader {
+      position: fixed;
+      inset: 0;
+      background: #0a0a0a;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .cascos-layout {
+      opacity: 0;
+    }
+  </style>
+
   <!-- Epic Loader -->
   <div id="explosion-loader">
     <div class="explosion-container">
@@ -18,7 +35,7 @@
       <div class="explosion-ring explosion-ring--2"></div>
       <div class="explosion-ring explosion-ring--3"></div>
       <div class="explosion-logo">
-        <img src="assets/img/gurulogo.png" alt="El Gurú de los Cascos">
+        <img src="assets/img/logos_new/logo_fondo_negro.png" alt="El Gurú de los Cascos">
       </div>
       <div class="explosion-text">CATÁLOGO</div>
     </div>
@@ -33,18 +50,18 @@
   </button>
 
   <!-- Sidebar Overlay -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
   <!-- Main Layout -->
   <div class="cascos-layout">
+
+    <!-- Sidebar Overlay (dentro del layout para mismo stacking context) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <!-- Sidebar Navigation -->
     <nav class="sidebar" id="sidebar">
       <div class="sidebar__header">
         <a href="index.php" class="sidebar__logo">
-          <img src="assets/img/gurulogo.png" alt="Logo">
+          <img src="assets/img/logos_new/logo_fondo_negro.png" alt="Logo">
         </a>
-        <span class="sidebar__brand">EL GURÚ</span>
       </div>
 
       <ul class="sidebar__menu">
@@ -72,13 +89,19 @@
             <span>Sobre Mí</span>
           </a>
         </li>
+        <li>
+          <a href="videos.php" class="sidebar__link">
+            <i class="bi bi-play-circle"></i>
+            <span>Videos</span>
+          </a>
+        </li>
       </ul>
 
       <div class="sidebar__footer">
         <div class="sidebar__social">
           <a href="https://www.youtube.com/@EL_GURU_DE_LOS_CASCOS" target="_blank"><i class="bi bi-youtube"></i></a>
-          <a href="https://www.instagram.com/el_guru_de_los_cascos" target="_blank"><i class="bi bi-instagram"></i></a>
-          <a href="https://www.tiktok.com/@el_guru_de_los_cascos" target="_blank"><i class="bi bi-tiktok"></i></a>
+          <a href="https://www.instagram.com/elgurudeloscascos/" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.tiktok.com/@elgurudeloscascos" target="_blank"><i class="bi bi-tiktok"></i></a>
         </div>
       </div>
 
@@ -89,6 +112,28 @@
 
     <!-- Main Content -->
     <main class="cascos-main">
+
+      <!-- Background Particles -->
+      <div class="bg-particles">
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+      </div>
+
+      <!-- Decorative Corners -->
+      <div class="decor decor--top-left"></div>
+      <div class="decor decor--top-right"></div>
+      <div class="decor decor--bottom-left"></div>
+      <div class="decor decor--bottom-right"></div>
 
       <!-- Header Section -->
       <header class="cascos-header">
@@ -106,20 +151,28 @@
         <!-- Quick Filters -->
         <div class="quick-filters">
           <button class="filter-chip filter-chip--active" data-filter="all">
-            <i class="bi bi-grid-3x3"></i>
+            <img src="assets/img/iconos_cascos/Multiprop.png" alt="Todos" class="filter-icon">
             <span>Todos</span>
           </button>
           <button class="filter-chip" data-filter="aventura">
-            <i class="bi bi-compass"></i>
+            <img src="assets/img/iconos_cascos/Multiprop.png" alt="Aventura" class="filter-icon">
             <span>Aventura</span>
           </button>
+          <button class="filter-chip" data-filter="abatible">
+            <img src="assets/img/iconos_cascos/Abatible.png" alt="Abatible" class="filter-icon">
+            <span>Abatible</span>
+          </button>
           <button class="filter-chip" data-filter="integral">
-            <i class="bi bi-shield-check"></i>
+            <img src="assets/img/iconos_cascos/Integral.png" alt="Integral" class="filter-icon">
             <span>Integral</span>
           </button>
-          <button class="filter-chip" data-filter="modular">
-            <i class="bi bi-layers"></i>
-            <span>Modular</span>
+          <button class="filter-chip" data-filter="jet">
+            <img src="assets/img/iconos_cascos/Abierto.png" alt="Jet" class="filter-icon">
+            <span>Jet</span>
+          </button>
+          <button class="filter-chip" data-filter="cross">
+            <img src="assets/img/iconos_cascos/Cross.png" alt="Cross" class="filter-icon">
+            <span>Cross</span>
           </button>
         </div>
       </header>
@@ -163,26 +216,6 @@
                 <span class="categoria-card__tag">Versátil</span>
                 <h3 class="categoria-card__title">Abatible</h3>
                 <p class="categoria-card__desc">Comodidad y practicidad</p>
-                <div class="categoria-card__action">
-                  <span>Explorar</span>
-                  <i class="bi bi-arrow-right"></i>
-                </div>
-              </div>
-              <div class="categoria-card__particles">
-                <span></span><span></span><span></span>
-              </div>
-            </a>
-
-            <a href="cascos_producto.php?tipo=modular" class="categoria-card" data-category="modular">
-              <div class="categoria-card__bg"></div>
-              <div class="categoria-card__glow"></div>
-              <div class="categoria-card__image">
-                <img src="assets/img/catalogo/submenu/cascos/modularsinfondo1.png" alt="Modular">
-              </div>
-              <div class="categoria-card__content">
-                <span class="categoria-card__tag">2 en 1</span>
-                <h3 class="categoria-card__title">Modular</h3>
-                <p class="categoria-card__desc">Lo mejor de dos mundos</p>
                 <div class="categoria-card__action">
                   <span>Explorar</span>
                   <i class="bi bi-arrow-right"></i>
@@ -274,10 +307,10 @@
 
   </div>
 
-  <!-- Floating WhatsApp -->
-  <a href="https://wa.me/tuNumero" target="_blank" class="floating-whatsapp">
-    <i class="bi bi-whatsapp"></i>
-    <span class="whatsapp-pulse"></span>
+  <!-- Floating Guru Button -->
+  <a href="https://wa.me/573052332296?text=Hola%20Guru!%20Quiero%20preguntarte%20por%20un%20casco" target="_blank" class="floating-guru" aria-label="WhatsApp">
+    <span class="guru-float-bubble">Pide el tuyo!</span>
+    <img src="assets/img/logos_new/logo_fondo_negro.png" alt="Gurú" class="guru-float-img">
   </a>
 
   <!-- Scripts -->
@@ -289,6 +322,7 @@
       const loader = document.getElementById('explosion-loader');
       setTimeout(() => loader.classList.add('exploding'), 600);
       setTimeout(() => {
+        document.body.classList.add('loaded');
         loader.classList.add('done');
         setTimeout(() => loader.style.display = 'none', 100);
       }, 1800);
@@ -696,7 +730,7 @@
     }
 
     .sidebar__logo img {
-      width: 45px;
+      width: 70px;
       filter: drop-shadow(0 0 15px var(--neon-glow));
       transition: transform 0.3s ease;
     }
@@ -900,6 +934,86 @@
       overflow: hidden;
     }
 
+    /* Sky glow - top ambient */
+    .cascos-main::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 35%;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(57, 255, 20, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 30% 0%, rgba(46, 204, 113, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 35% at 70% 0%, rgba(57, 255, 20, 0.03) 0%, transparent 55%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ==================== */
+    /* Background Particles */
+    /* ==================== */
+    .bg-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bg-dot {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--neon-primary);
+      border-radius: 50%;
+      opacity: 0;
+      animation: dotFloat linear infinite;
+      box-shadow: 0 0 6px var(--neon-glow), 0 0 12px rgba(57, 255, 20, 0.2);
+    }
+
+    .bg-dot:nth-child(1)  { left: 5%;  animation-duration: 12s; animation-delay: 0s; width: 3px; height: 3px; }
+    .bg-dot:nth-child(2)  { left: 15%; animation-duration: 10s; animation-delay: 1s; width: 5px; height: 5px; }
+    .bg-dot:nth-child(3)  { left: 25%; animation-duration: 14s; animation-delay: 2s; }
+    .bg-dot:nth-child(4)  { left: 35%; animation-duration: 11s; animation-delay: 0.5s; width: 3px; height: 3px; }
+    .bg-dot:nth-child(5)  { left: 45%; animation-duration: 13s; animation-delay: 3s; width: 5px; height: 5px; }
+    .bg-dot:nth-child(6)  { left: 55%; animation-duration: 9s;  animation-delay: 1.5s; }
+    .bg-dot:nth-child(7)  { left: 65%; animation-duration: 15s; animation-delay: 4s; width: 3px; height: 3px; }
+    .bg-dot:nth-child(8)  { left: 75%; animation-duration: 10s; animation-delay: 2.5s; width: 5px; height: 5px; }
+    .bg-dot:nth-child(9)  { left: 85%; animation-duration: 12s; animation-delay: 0.8s; }
+    .bg-dot:nth-child(10) { left: 92%; animation-duration: 11s; animation-delay: 3.5s; width: 3px; height: 3px; }
+    .bg-dot:nth-child(11) { left: 10%; animation-duration: 14s; animation-delay: 5s; width: 5px; height: 5px; }
+    .bg-dot:nth-child(12) { left: 50%; animation-duration: 16s; animation-delay: 6s; }
+
+    @keyframes dotFloat {
+      0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.5;
+        transform: translateY(80vh) scale(1);
+      }
+      50% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.3;
+        transform: translateY(-10vh) scale(0.8);
+      }
+      100% {
+        transform: translateY(-15vh) scale(0);
+        opacity: 0;
+      }
+    }
+
+    /* Decorative Corners */
+    .decor { position: absolute; width: 60px; height: 60px; z-index: 1; pointer-events: none; opacity: 0.3; }
+    .decor--top-left { top: 10px; left: 10px; border-top: 2px solid var(--neon-primary); border-left: 2px solid var(--neon-primary); }
+    .decor--top-right { top: 10px; right: 10px; border-top: 2px solid var(--neon-primary); border-right: 2px solid var(--neon-primary); }
+    .decor--bottom-left { bottom: 10px; left: 10px; border-bottom: 2px solid var(--neon-primary); border-left: 2px solid var(--neon-primary); }
+    .decor--bottom-right { bottom: 10px; right: 10px; border-bottom: 2px solid var(--neon-primary); border-right: 2px solid var(--neon-primary); }
+
     /* Header */
     .cascos-header {
       text-align: center;
@@ -999,6 +1113,22 @@
 
     .filter-chip i { font-size: 0.9rem; }
 
+    .filter-icon {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      filter: brightness(0) invert(0.7);
+      transition: filter 0.3s ease;
+    }
+
+    .filter-chip:hover .filter-icon {
+      filter: brightness(0) invert(0.3) sepia(1) saturate(5) hue-rotate(85deg);
+    }
+
+    .filter-chip--active .filter-icon {
+      filter: brightness(0) invert(0.05);
+    }
+
     .filter-chip:hover {
       border-color: var(--neon-primary);
       color: var(--neon-primary);
@@ -1031,6 +1161,7 @@
     .carousel-track {
       display: flex;
       gap: 20px;
+      padding: 20px 15px;
       transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
@@ -1100,12 +1231,12 @@
     .categoria-card {
       flex: 0 0 calc(25% - 15px);
       min-width: 280px;
-      height: calc(100vh - 280px);
-      max-height: 450px;
-      min-height: 350px;
+      height: calc(100vh - 320px);
+      max-height: 420px;
+      min-height: 320px;
       position: relative;
       border-radius: 24px;
-      overflow: hidden;
+      overflow: visible;
       text-decoration: none;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
@@ -1116,6 +1247,7 @@
       background: linear-gradient(145deg, var(--gray-700) 0%, var(--gray-800) 100%);
       border: 1px solid var(--gray-600);
       border-radius: 24px;
+      overflow: hidden;
       transition: all 0.4s ease;
     }
 
@@ -1135,11 +1267,11 @@
 
     .categoria-card__image {
       position: absolute;
-      top: 5%;
+      top: 3%;
       left: 50%;
       transform: translateX(-50%);
-      width: 85%;
-      height: 55%;
+      width: 92%;
+      height: 60%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1166,6 +1298,7 @@
       right: 0;
       padding: 1.5rem;
       background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 60%, transparent 100%);
+      border-radius: 0 0 24px 24px;
       z-index: 3;
       display: flex;
       flex-direction: column;
@@ -1238,6 +1371,7 @@
       inset: 0;
       pointer-events: none;
       overflow: hidden;
+      border-radius: 24px;
       z-index: 1;
     }
 
@@ -1281,41 +1415,66 @@
     .no-results p { font-size: 1.1rem; }
 
     /* ==================== */
-    /* Floating WhatsApp */
+    /* Floating Guru Button */
     /* ==================== */
-    .floating-whatsapp {
+    .floating-guru {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 55px;
-      height: 55px;
-      background: linear-gradient(135deg, #25d366, #128c7e);
-      color: var(--white);
-      border-radius: 50%;
+      bottom: 25px;
+      right: 25px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
       text-decoration: none;
-      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
       z-index: 99;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease;
+      animation: guruFloatBounce 3s ease-in-out infinite;
     }
-
-    .floating-whatsapp:hover { transform: scale(1.1); }
-
-    .whatsapp-pulse {
+    .floating-guru:hover {
+      transform: scale(1.1) translateY(-5px);
+      animation: none;
+    }
+    .guru-float-img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 15px var(--neon-glow)) drop-shadow(0 0 30px rgba(57, 255, 20, 0.2));
+      transition: filter 0.3s ease;
+    }
+    .floating-guru:hover .guru-float-img {
+      filter: drop-shadow(0 0 20px var(--neon-glow)) drop-shadow(0 0 40px rgba(57, 255, 20, 0.4));
+    }
+    .guru-float-bubble {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: rgba(37, 211, 102, 0.4);
-      animation: whatsappPulse 2s ease-out infinite;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 6px;
+      padding: 0.4rem 0.8rem;
+      background: var(--neon-primary);
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 800;
+      white-space: nowrap;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(57, 255, 20, 0.4);
+      animation: bubbleFloat 2s ease-in-out infinite;
     }
-
-    @keyframes whatsappPulse {
-      0% { transform: scale(1); opacity: 0.6; }
-      100% { transform: scale(1.8); opacity: 0; }
+    .guru-float-bubble::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--neon-primary);
+    }
+    @keyframes guruFloatBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes bubbleFloat {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-4px); }
     }
 
     /* ==================== */
@@ -1350,8 +1509,9 @@
 
       .cascos-main { padding: 1.5rem; padding-top: 20px; }
       .carousel-wrapper { padding: 0 50px; }
+      .carousel-track { padding: 20px 12px; }
       .carousel-nav { width: 40px; height: 40px; font-size: 1.2rem; }
-      .categoria-card { flex: 0 0 calc(50% - 10px); min-width: 240px; height: calc(100vh - 280px); }
+      .categoria-card { flex: 0 0 calc(50% - 10px); min-width: 240px; height: calc(100vh - 320px); }
     }
 
     /* ==================== */
@@ -1370,21 +1530,25 @@
       .filter-chip span { display: none; }
 
       .carousel-wrapper { padding: 0 40px; }
+      .carousel-track { padding: 18px 10px; }
       .carousel-nav { width: 35px; height: 35px; font-size: 1rem; }
 
       .categoria-card {
         flex: 0 0 calc(50% - 10px);
         min-width: 200px;
-        height: calc(100vh - 300px);
-        min-height: 280px;
-        max-height: 380px;
+        height: calc(100vh - 340px);
+        min-height: 260px;
+        max-height: 350px;
       }
 
+      .categoria-card__image { width: 95%; height: 58%; top: 2%; }
       .categoria-card__title { font-size: 1.2rem; }
       .categoria-card__desc { font-size: 0.75rem; }
       .categoria-card__content { padding: 1rem; }
 
-      .floating-whatsapp { width: 48px; height: 48px; font-size: 1.4rem; }
+      .floating-guru { bottom: 15px; right: 15px; }
+      .guru-float-img { width: 55px; height: 55px; }
+      .guru-float-bubble { font-size: 0.6rem; padding: 0.3rem 0.6rem; }
     }
 
     /* ==================== */
@@ -1403,17 +1567,18 @@
       }
 
       .carousel-wrapper { padding: 0 35px; }
+      .carousel-track { padding: 15px 8px; }
       .carousel-nav { width: 30px; height: 30px; font-size: 0.9rem; }
 
       .categoria-card {
         flex: 0 0 100%;
         min-width: 100%;
-        height: calc(100vh - 260px);
-        min-height: 300px;
-        max-height: 400px;
+        height: calc(100vh - 300px);
+        min-height: 280px;
+        max-height: 370px;
       }
 
-      .categoria-card__image { height: 50%; }
+      .categoria-card__image { width: 95%; height: 60%; top: 2%; }
       .categoria-card__title { font-size: 1.3rem; }
       .categoria-card__desc { font-size: 0.8rem; }
 

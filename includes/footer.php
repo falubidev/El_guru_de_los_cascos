@@ -6,8 +6,8 @@
     
     <div class="social-links d-flex justify-content-center mb-2">
       <a href="https://www.youtube.com/@EL_GURU_DE_LOS_CASCOS" target="_blank"><i class="bi bi-youtube"></i></a>
-      <a href="https://www.instagram.com/el_guru_de_los_cascos/?igsh=MWZudTBkc2dud21saA%3D%3D" target="_blank"><i class="bi bi-instagram"></i></a>
-      <a href="#"><i class="bi bi-whatsapp"></i></a>
+      <a href="https://www.instagram.com/elgurudeloscascos/" target="_blank"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.tiktok.com/@elgurudeloscascos" target="_blank"><i class="bi bi-tiktok"></i></a>
     </div>
 
     <div class="by-falubi">

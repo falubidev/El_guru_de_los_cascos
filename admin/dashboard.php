@@ -144,10 +144,10 @@ $marcas = $marcas_stmt->fetchAll(PDO::FETCH_ASSOC);
     </td>
     <td class="d-none"><?= $fila['estado'] ?></td>
       <td>
-        <?php if ($fila['tipo'] === 'compra'): ?>
+        <?php if (($fila['tipo'] ?? '') === 'compra'): ?>
           <span class="badge bg-success">COMPRA</span>
         <?php else: ?>
-          <?= $fila['tipo'] ? htmlspecialchars(strtoupper($fila['tipo'])) : '<span class="text-muted">N/A</span>' ?>
+          <?= !empty($fila['tipo']) ? htmlspecialchars(strtoupper($fila['tipo'])) : '<span class="text-muted">N/A</span>' ?>
         <?php endif; ?>
       </td>
 

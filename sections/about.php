@@ -19,9 +19,9 @@
   </p>
   <h5 class="fw-bold mb-3">Mis redes:</h5>
   <div class="social-icons mb-4">
-    <a href="https://www.instagram.com/el_guru_de_los_cascos" target="_blank" class="social-link"><i class="bi bi-instagram"></i></a>
+    <a href="https://www.instagram.com/elgurudeloscascos/" target="_blank" class="social-link"><i class="bi bi-instagram"></i></a>
     <a href="https://www.youtube.com/@EL_GURU_DE_LOS_CASCOS" target="_blank" class="social-link"><i class="bi bi-youtube"></i></a>
-    <a href="https://www.tiktok.com/@el_guru_de_los_cascos" target="_blank" class="social-link"><i class="bi bi-tiktok" style="font-size: 2rem;"></i></a>
+    <a href="https://www.tiktok.com/@elgurudeloscascos" target="_blank" class="social-link"><i class="bi bi-tiktok" style="font-size: 2rem;"></i></a>
   </div>
 </div>
 

@@ -9,8 +9,37 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 date_default_timezone_set('America/Bogota');
 
+function verificarRecaptcha($response) {
+    if (empty($response)) return false;
+    $url = 'https://www.google.com/recaptcha/api/siteverify';
+    $data = [
+        'secret' => RECAPTCHA_SECRET_KEY,
+        'response' => $response,
+        'remoteip' => $_SERVER['REMOTE_ADDR'] ?? ''
+    ];
+    $options = [
+        'http' => [
+            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method' => 'POST',
+            'content' => http_build_query($data)
+        ]
+    ];
+    $result = file_get_contents($url, false, stream_context_create($options));
+    if ($result === false) return false;
+    $json = json_decode($result, true);
+    return isset($json['success']) && $json['success'] === true;
+}
+
 $fecha = date("Y-m-d H:i:s");
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'desconocida';
+
+// Validar reCAPTCHA en todos los envíos
+$recaptchaResponse = $_POST['g-recaptcha-response'] ?? '';
+if (!verificarRecaptcha($recaptchaResponse)) {
+    http_response_code(403);
+    echo "Error: Verificación reCAPTCHA fallida.";
+    exit;
+}
 
 // Verifica si es una duda rápida
 if (isset($_POST['mensaje']) && !isset($_POST['nombre'])) {
@@ -41,7 +70,7 @@ if (isset($_POST['mensaje']) && !isset($_POST['nombre'])) {
        $mail->Body = "
         <div style='background:#111;padding:20px;border-radius:10px;color:#0f0;'>
         <div style='text-align:center; margin-bottom:15px;'>
-            <img src='https://elgurudeloscascos.com/assets/img/gurulogo.png' alt='Logo Gurú' style='height:60px;'>
+            <img src='https://elgurudeloscascos.com/assets/img/logos_new/logo_fondo_negro.png' alt='Logo Gurú' style='height:60px;'>
         </div>
         <h3 style='color:#80ff80;'>Duda recibida</h3>
         <p><strong>Mensaje:</strong><br>" . nl2br(htmlspecialchars($mensaje)) . "</p>
@@ -66,7 +95,7 @@ if (isset($_POST['mensaje']) && !isset($_POST['nombre'])) {
 $nombre = $_POST['nombre'] ?? '';
 $telefono = $_POST['telefono'] ?? '';
 $marca = $_POST['marca'] ?? '';
-$referencia = $_POST['referencia'] ?? '';$referencia = $_POST['referencia'] ?? '';
+$referencia = $_POST['referencia'] ?? '';
 $observaciones = $_POST['observaciones'] ?? '';
 $tipo = $_POST['tipo'] ?? null;
 
@@ -76,10 +105,29 @@ if ($nombre === '' || $telefono === '' || $marca === '' || $referencia === '') {
     exit;
 }
 
+// Procesar imagen de referencia (opcional)
+$imagen_referencia = null;
+if (isset($_FILES['imagen_ref']) && $_FILES['imagen_ref']['error'] === UPLOAD_ERR_OK) {
+    $allowed = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mime = finfo_file($finfo, $_FILES['imagen_ref']['tmp_name']);
+    finfo_close($finfo);
+
+    if (in_array($mime, $allowed) && $_FILES['imagen_ref']['size'] <= 5 * 1024 * 1024) {
+        $uploadDir = 'uploads/referencias/';
+        if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
+        $ext = pathinfo($_FILES['imagen_ref']['name'], PATHINFO_EXTENSION);
+        $filename = 'ref_' . date('Ymd_His') . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
+        if (move_uploaded_file($_FILES['imagen_ref']['tmp_name'], $uploadDir . $filename)) {
+            $imagen_referencia = $uploadDir . $filename;
+        }
+    }
+}
+
 // Guardar en DB
 try {
-    $stmt = $pdo->prepare("INSERT INTO formularios (fecha, nombre, telefono, marca, referencia, observaciones, ip, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$fecha, $nombre, $telefono, $marca, $referencia, $observaciones, $ip, $tipo]);
+    $stmt = $pdo->prepare("INSERT INTO formularios (fecha, nombre, telefono, marca, referencia, observaciones, ip, tipo, imagen_referencia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$fecha, $nombre, $telefono, $marca, $referencia, $observaciones, $ip, $tipo, $imagen_referencia]);
 } catch (Exception $e) {
     http_response_code(500);
     echo "Error al guardar en DB: " . $e->getMessage();
@@ -123,7 +171,7 @@ try {
     $mail->Body = "
     <div style='max-width:600px;margin:auto;background-color:#1a1a1a;color:#fff;padding:20px;border-radius:10px;'>
     <div style='text-align:center; margin-bottom:20px;'>
-        <img src='https://elgurudeloscascos.com/assets/img/gurulogo.png' alt='Logo Gurú' style='max-height:80px;'>
+        <img src='https://elgurudeloscascos.com/assets/img/logos_new/logo_fondo_negro.png' alt='Logo Gurú' style='max-height:80px;'>
     </div>
     <h2 style='color:#00ff99;'>Formulario recibido</h2>
     <table style='width:100%;font-size:14px;'>
@@ -133,10 +181,15 @@ try {
         <tr><td><strong>Teléfono:</strong></td><td>$telefono</td></tr>
         <tr><td><strong>Marca:</strong></td><td>$marca</td></tr>
         <tr><td><strong>Referencia:</strong></td><td>$referencia</td></tr>
-        <tr><td><strong>Observaciones:</strong></td><td>$observaciones</td></tr>    
+        <tr><td><strong>Observaciones:</strong></td><td>$observaciones</td></tr>
+        <tr><td><strong>Imagen ref:</strong></td><td>" . ($imagen_referencia ? "Sí (adjunta)" : "No") . "</td></tr>
     </table>
 
     </div>";
+
+    if ($imagen_referencia && file_exists($imagen_referencia)) {
+        $mail->addAttachment($imagen_referencia);
+    }
 
     $mail->send();
 } catch (Exception $e) {

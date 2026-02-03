@@ -18,7 +18,7 @@ $where = [];
 $params = [];
 
 if (!empty($tipo)) {
-    $where[] = 'tipo_id = (SELECT id FROM tbl_tipos WHERE nombre = :tipo)';
+    $where[] = 'tipo_id = (SELECT id FROM tbl_tipos WHERE LOWER(nombre) = LOWER(:tipo))';
     $params[':tipo'] = $tipo;
 }
 
@@ -51,7 +51,7 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Obtener filtros
 $marcas = $pdo->query("SELECT nombre FROM tbl_marcas ORDER BY nombre ASC")->fetchAll(PDO::FETCH_COLUMN);
-$tiposStmt = $pdo->prepare("SELECT id, nombre FROM tbl_tipos WHERE linea_id = 1 ORDER BY nombre ASC");
+$tiposStmt = $pdo->prepare("SELECT id, nombre FROM tbl_tipos WHERE linea_id = 1 AND LOWER(nombre) != 'modular' ORDER BY nombre ASC");
 $tiposStmt->execute();
 $tipos = $tiposStmt->fetchAll(PDO::FETCH_ASSOC);
 $graficos = $pdo->query("SELECT id, nombre FROM tbl_graficos ORDER BY nombre ASC")->fetchAll(PDO::FETCH_ASSOC);
@@ -66,7 +66,7 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
   <div id="scan-loader">
     <div class="scan-container">
       <div class="scan-logo">
-        <img src="assets/img/gurulogo.png" alt="El Gurú de los Cascos">
+        <img src="assets/img/logos_new/logo_fondo_negro.png" alt="El Gurú de los Cascos">
         <div class="scan-line"></div>
       </div>
       <div class="scan-text"><?= strtoupper($tipoActual) ?></div>
@@ -83,18 +83,17 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
   </button>
 
   <!-- Sidebar Overlay -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
   <!-- Main Layout -->
   <div class="cascos-layout">
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <!-- Sidebar Navigation -->
     <nav class="sidebar" id="sidebar">
       <div class="sidebar__header">
         <a href="index.php" class="sidebar__logo">
-          <img src="assets/img/gurulogo.png" alt="Logo">
+          <img src="assets/img/logos_new/logo_fondo_negro.png" alt="Logo">
         </a>
-        <span class="sidebar__brand">EL GURÚ</span>
       </div>
 
       <ul class="sidebar__menu">
@@ -122,13 +121,19 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
             <span>Sobre Mí</span>
           </a>
         </li>
+        <li>
+          <a href="videos.php" class="sidebar__link">
+            <i class="bi bi-play-circle"></i>
+            <span>Videos</span>
+          </a>
+        </li>
       </ul>
 
       <div class="sidebar__footer">
         <div class="sidebar__social">
           <a href="https://www.youtube.com/@EL_GURU_DE_LOS_CASCOS" target="_blank"><i class="bi bi-youtube"></i></a>
-          <a href="https://www.instagram.com/el_guru_de_los_cascos" target="_blank"><i class="bi bi-instagram"></i></a>
-          <a href="https://www.tiktok.com/@el_guru_de_los_cascos" target="_blank"><i class="bi bi-tiktok"></i></a>
+          <a href="https://www.instagram.com/elgurudeloscascos/" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.tiktok.com/@elgurudeloscascos" target="_blank"><i class="bi bi-tiktok"></i></a>
         </div>
       </div>
 
@@ -139,6 +144,22 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
 
     <!-- Main Content -->
     <main class="productos-main">
+
+      <!-- Background Particles -->
+      <div class="bg-particles">
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+        <span class="bg-dot"></span>
+      </div>
 
       <!-- Decorative Corners -->
       <div class="decor decor--top-left"></div>
@@ -181,7 +202,7 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
               <select class="filter-select" name="tipo" id="tipo">
                 <option value="">Todos</option>
                 <?php foreach ($tipos as $t): ?>
-                  <option value="<?= htmlspecialchars($t['nombre']) ?>" <?= $tipo === $t['nombre'] ? 'selected' : '' ?>>
+                  <option value="<?= htmlspecialchars($t['nombre']) ?>" <?= strcasecmp($tipo, $t['nombre']) === 0 ? 'selected' : '' ?>>
                     <?= htmlspecialchars($t['nombre']) ?>
                   </option>
                 <?php endforeach; ?>
@@ -265,9 +286,14 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
           <?php else: ?>
             <div class="products-grid">
               <?php foreach ($productos as $producto): ?>
+                <?php
+                  $imgProducto = (!empty($producto['imagen']) && file_exists('admin/uploads/productos/' . $producto['imagen']))
+                    ? 'admin/uploads/productos/' . htmlspecialchars($producto['imagen'])
+                    : 'assets/img/iconos/aliencasco.png';
+                ?>
                 <a href="detalle.php?id=<?= $producto['id'] ?>" class="product-card">
                   <div class="product-card__image">
-                    <img src="admin/uploads/productos/<?= htmlspecialchars($producto['imagen']) ?>" alt="<?= htmlspecialchars($producto['referencia']) ?>">
+                    <img src="<?= $imgProducto ?>" alt="<?= htmlspecialchars($producto['referencia']) ?>">
                     <div class="product-card__overlay">
                       <span class="view-btn">Ver detalle <i class="bi bi-arrow-right"></i></span>
                     </div>
@@ -312,10 +338,10 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
 
   </div>
 
-  <!-- Floating WhatsApp -->
-  <a href="https://wa.me/tuNumero" target="_blank" class="floating-whatsapp">
-    <i class="bi bi-whatsapp"></i>
-    <span class="whatsapp-pulse"></span>
+  <!-- Floating Guru Button -->
+  <a href="https://wa.me/573052332296?text=Hola%20Guru!%20Quiero%20preguntarte%20por%20un%20casco" target="_blank" class="floating-guru">
+    <span class="guru-float-bubble">Pide el tuyo!</span>
+    <img src="assets/img/logos_new/logo_fondo_negro.png" alt="Gurú" class="guru-float-img">
   </a>
 
   <!-- Scripts -->
@@ -326,6 +352,7 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
       // Loader
       const loader = document.getElementById('scan-loader');
       setTimeout(() => {
+        document.body.classList.add('loaded');
         loader.classList.add('done');
         setTimeout(() => loader.style.display = 'none', 500);
       }, 1800);
@@ -385,11 +412,6 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
         filtersPanel.classList.remove('filters-panel--open');
       });
 
-      // Clean URL after load
-      const url = new URL(window.location.href);
-      if (url.search.length > 0) {
-        window.history.replaceState({}, document.title, url.pathname);
-      }
     });
   </script>
 
@@ -575,7 +597,7 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
     .sidebar:hover { width: 200px; }
 
     .sidebar__header { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 2rem; }
-    .sidebar__logo img { width: 45px; filter: drop-shadow(0 0 15px var(--neon-glow)); transition: transform 0.3s ease; }
+    .sidebar__logo img { width: 70px; filter: drop-shadow(0 0 15px var(--neon-glow)); transition: transform 0.3s ease; }
     .sidebar__logo:hover img { transform: scale(1.1); }
 
     .sidebar__brand {
@@ -640,6 +662,61 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
       flex-direction: column;
       position: relative;
       overflow: hidden;
+    }
+
+    /* Background Particles */
+    .bg-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bg-dot {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--neon-primary);
+      border-radius: 50%;
+      opacity: 0;
+      animation: dotFloat linear infinite;
+      box-shadow: 0 0 6px var(--neon-glow), 0 0 12px rgba(57, 255, 20, 0.2);
+    }
+
+    .bg-dot:nth-child(1)  { left: 5%;  animation-duration: 12s; animation-delay: 0s; width: 3px; height: 3px; }
+    .bg-dot:nth-child(2)  { left: 15%; animation-duration: 10s; animation-delay: 1s; width: 5px; height: 5px; }
+    .bg-dot:nth-child(3)  { left: 25%; animation-duration: 14s; animation-delay: 2s; }
+    .bg-dot:nth-child(4)  { left: 35%; animation-duration: 11s; animation-delay: 0.5s; width: 3px; height: 3px; }
+    .bg-dot:nth-child(5)  { left: 45%; animation-duration: 13s; animation-delay: 3s; width: 5px; height: 5px; }
+    .bg-dot:nth-child(6)  { left: 55%; animation-duration: 9s;  animation-delay: 1.5s; }
+    .bg-dot:nth-child(7)  { left: 65%; animation-duration: 15s; animation-delay: 4s; width: 3px; height: 3px; }
+    .bg-dot:nth-child(8)  { left: 75%; animation-duration: 10s; animation-delay: 2.5s; width: 5px; height: 5px; }
+    .bg-dot:nth-child(9)  { left: 85%; animation-duration: 12s; animation-delay: 0.8s; }
+    .bg-dot:nth-child(10) { left: 92%; animation-duration: 11s; animation-delay: 3.5s; width: 3px; height: 3px; }
+    .bg-dot:nth-child(11) { left: 10%; animation-duration: 14s; animation-delay: 5s; width: 5px; height: 5px; }
+    .bg-dot:nth-child(12) { left: 50%; animation-duration: 16s; animation-delay: 6s; }
+
+    @keyframes dotFloat {
+      0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.5;
+        transform: translateY(80vh) scale(1);
+      }
+      50% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.3;
+        transform: translateY(-10vh) scale(0.8);
+      }
+      100% {
+        transform: translateY(-15vh) scale(0);
+        opacity: 0;
+      }
     }
 
     .decor { position: absolute; width: 60px; height: 60px; z-index: 1; pointer-events: none; opacity: 0.3; }
@@ -943,29 +1020,66 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
 
     .btn-reset:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(57, 255, 20, 0.3); }
 
-    /* WhatsApp */
-    .floating-whatsapp {
+    /* Floating Guru */
+    .floating-guru {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 55px;
-      height: 55px;
-      background: linear-gradient(135deg, #25d366, #128c7e);
-      color: var(--white);
-      border-radius: 50%;
+      bottom: 25px;
+      right: 25px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
       text-decoration: none;
-      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
       z-index: 99;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease;
+      animation: guruFloatBounce 3s ease-in-out infinite;
     }
-
-    .floating-whatsapp:hover { transform: scale(1.1); color: var(--white); }
-    .whatsapp-pulse { position: absolute; width: 100%; height: 100%; border-radius: 50%; background: rgba(37, 211, 102, 0.4); animation: whatsappPulse 2s ease-out infinite; }
-    @keyframes whatsappPulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.8); opacity: 0; } }
+    .floating-guru:hover {
+      transform: scale(1.1) translateY(-5px);
+      animation: none;
+    }
+    .guru-float-img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 15px var(--neon-glow)) drop-shadow(0 0 30px rgba(57, 255, 20, 0.2));
+      transition: filter 0.3s ease;
+    }
+    .floating-guru:hover .guru-float-img {
+      filter: drop-shadow(0 0 20px var(--neon-glow)) drop-shadow(0 0 40px rgba(57, 255, 20, 0.4));
+    }
+    .guru-float-bubble {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 6px;
+      padding: 0.4rem 0.8rem;
+      background: var(--neon-primary);
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 800;
+      white-space: nowrap;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(57, 255, 20, 0.4);
+      animation: bubbleFloat 2s ease-in-out infinite;
+    }
+    .guru-float-bubble::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--neon-primary);
+    }
+    @keyframes guruFloatBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes bubbleFloat {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-4px); }
+    }
 
     /* Responsive - Tablet */
     @media (max-width: 968px) {
@@ -1024,7 +1138,9 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
 
       .products-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
       .product-card__image { height: 180px; }
-      .floating-whatsapp { width: 48px; height: 48px; font-size: 1.4rem; }
+      .floating-guru { bottom: 15px; right: 15px; }
+      .guru-float-img { width: 55px; height: 55px; }
+      .guru-float-bubble { font-size: 0.6rem; padding: 0.3rem 0.6rem; }
     }
 
     /* Responsive - Small Mobile */

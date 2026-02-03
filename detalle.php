@@ -55,14 +55,14 @@ $relacionadosRaw = $stmtRelacionados->fetchAll(PDO::FETCH_ASSOC);
 $relacionados = array_map(function($item) {
   $item['imagen_url'] = !empty($item['imagen']) && file_exists('admin/uploads/productos/' . $item['imagen'])
     ? 'admin/uploads/productos/' . $item['imagen']
-    : 'assets/img/catalogo/submenu/casco.png';
+    : 'assets/img/iconos/aliencasco.png';
   return $item;
 }, $relacionadosRaw);
 
 // Imagen predeterminada si no hay foto
 $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/productos/' . $producto['imagen'])
   ? 'admin/uploads/productos/' . htmlspecialchars($producto['imagen'])
-  : 'assets/img/catalogo/submenu/casco.png';
+  : 'assets/img/iconos/aliencasco.png';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -216,8 +216,8 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
     }
 
     /* ========== SIDEBAR OVERLAY ========== */
-    .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); z-index: 999; opacity: 0; transition: opacity 0.3s ease; }
-    .sidebar-overlay.active { opacity: 1; }
+    .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .sidebar-overlay.active { opacity: 1; pointer-events: auto; }
 
     /* ========== SIDEBAR ========== */
     .sidebar {
@@ -238,7 +238,7 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
     .sidebar:hover { width: 200px; }
 
     .sidebar__header { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 2rem; }
-    .sidebar__logo img { width: 45px; filter: drop-shadow(0 0 15px var(--neon-glow)); transition: transform 0.3s ease; }
+    .sidebar__logo img { width: 70px; filter: drop-shadow(0 0 15px var(--neon-glow)); transition: transform 0.3s ease; }
     .sidebar__logo:hover img { transform: scale(1.1); }
 
     .sidebar__brand {
@@ -329,6 +329,60 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
     .decor--bottom-left { bottom: 10px; left: 10px; border-bottom: 2px solid var(--neon-primary); border-left: 2px solid var(--neon-primary); }
     .decor--bottom-right { bottom: 10px; right: 10px; border-bottom: 2px solid var(--neon-primary); border-right: 2px solid var(--neon-primary); }
 
+    /* ========== BACKGROUND PARTICLES ========== */
+    .bg-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bg-dot {
+      position: absolute;
+      bottom: 0;
+      border-radius: 50%;
+      background: var(--neon-primary);
+      opacity: 0;
+      animation: dotFloatUp linear infinite;
+    }
+
+    .bg-dot:nth-child(1)  { left: 5%;  width: 3px; height: 3px; animation-duration: 9s;  animation-delay: 0s;   }
+    .bg-dot:nth-child(2)  { left: 15%; width: 4px; height: 4px; animation-duration: 11s; animation-delay: 1.2s; }
+    .bg-dot:nth-child(3)  { left: 25%; width: 2px; height: 2px; animation-duration: 8s;  animation-delay: 3s;   }
+    .bg-dot:nth-child(4)  { left: 35%; width: 5px; height: 5px; animation-duration: 12s; animation-delay: 0.5s; box-shadow: 0 0 6px var(--neon-glow); }
+    .bg-dot:nth-child(5)  { left: 45%; width: 3px; height: 3px; animation-duration: 10s; animation-delay: 2s;   }
+    .bg-dot:nth-child(6)  { left: 55%; width: 4px; height: 4px; animation-duration: 9.5s; animation-delay: 4s;  }
+    .bg-dot:nth-child(7)  { left: 65%; width: 2px; height: 2px; animation-duration: 11s; animation-delay: 1.5s; }
+    .bg-dot:nth-child(8)  { left: 75%; width: 5px; height: 5px; animation-duration: 10s; animation-delay: 3.5s; box-shadow: 0 0 6px var(--neon-glow); }
+    .bg-dot:nth-child(9)  { left: 85%; width: 3px; height: 3px; animation-duration: 8.5s; animation-delay: 0.8s; }
+    .bg-dot:nth-child(10) { left: 92%; width: 4px; height: 4px; animation-duration: 12s; animation-delay: 2.5s; }
+    .bg-dot:nth-child(11) { left: 10%; width: 2px; height: 2px; animation-duration: 13s; animation-delay: 5s;   }
+    .bg-dot:nth-child(12) { left: 50%; width: 3px; height: 3px; animation-duration: 9s;  animation-delay: 6s;   }
+
+    @keyframes dotFloatUp {
+      0%   { bottom: -5%; opacity: 0; transform: translateX(0) scale(1); }
+      10%  { opacity: 0.7; }
+      50%  { opacity: 0.5; transform: translateX(15px) scale(1.1); }
+      90%  { opacity: 0.2; }
+      100% { bottom: 105%; opacity: 0; transform: translateX(-10px) scale(0.8); }
+    }
+
+    /* ========== BOTTOM GLOW ========== */
+    .bottom-glow {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 18%;
+      background:
+        radial-gradient(ellipse 80% 70% at 50% 100%, rgba(57, 255, 20, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 30% 100%, rgba(46, 204, 113, 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 70% 100%, rgba(57, 255, 20, 0.05) 0%, transparent 60%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
     /* ========== HEADER ========== */
     .detalle-header {
       display: flex;
@@ -376,6 +430,8 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
       flex: 1;
       overflow-y: auto;
       padding: 1.5rem;
+      position: relative;
+      z-index: 5;
     }
 
     /* ========== PRODUCT GRID ========== */
@@ -481,25 +537,130 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
       margin-left: 0.5rem;
     }
 
-    /* ========== SPECS ========== */
-    .specs-section {
-      background: var(--gray-800);
-      border-radius: 12px;
-      padding: 1.25rem;
-      border: 1px solid var(--gray-600);
+    /* ========== INFO CARDS ROW ========== */
+    .info-cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .specs-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.9rem;
-      color: var(--neon-primary);
-      margin-bottom: 1rem;
+    .info-card {
+      background: var(--gray-800);
+      border-radius: 14px;
+      border: 1px solid var(--gray-600);
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+    }
+
+    .info-card:hover { border-color: rgba(57, 255, 20, 0.3); }
+
+    .info-card__header {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      border-bottom: 1px solid var(--gray-600);
+      transition: background 0.3s ease;
+      -webkit-tap-highlight-color: rgba(57, 255, 20, 0.1);
+      user-select: none;
     }
 
-    .specs-grid {
+    .info-card__header:hover { background: rgba(57, 255, 20, 0.03); }
+
+    .info-card__title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .info-card__title i { font-size: 1.1rem; color: var(--neon-primary); }
+
+    .info-card__title h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--neon-primary);
+      margin: 0;
+    }
+
+    .info-card__arrow {
+      color: var(--gray-300);
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .info-card--open .info-card__arrow { transform: rotate(180deg); }
+
+    .info-card__body {
+      position: relative;
+      max-height: 120px;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .info-card--open .info-card__body {
+      max-height: none;
+    }
+
+    .info-card__content {
+      padding: 1.25rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--gray-200);
+    }
+
+    .info-card__fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--gray-800));
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .info-card--open .info-card__fade { opacity: 0; }
+
+    .info-card__toggle {
+      width: 100%;
+      padding: 0.7rem;
+      background: none;
+      border: none;
+      border-top: 1px solid var(--gray-600);
+      color: var(--neon-primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      -webkit-tap-highlight-color: rgba(57, 255, 20, 0.1);
+      user-select: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: background 0.3s ease;
+    }
+
+    .info-card__toggle:hover { background: rgba(57, 255, 20, 0.05); }
+
+    .info-card__toggle .toggle-hide { display: none; }
+    .info-card--open .info-card__toggle .toggle-show { display: none; }
+    .info-card--open .info-card__toggle .toggle-hide { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+    /* Specs inline (fully visible, no collapse) */
+    .specs-inline {
+      background: var(--gray-800);
+      border-radius: 14px;
+      border: 1px solid var(--gray-600);
+      padding: 1rem 1.25rem;
+    }
+
+    /* Specs grid inside info card */
+    .specs-grid-card {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 0.75rem;
@@ -525,40 +686,6 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
 
     .spec-value { font-size: 0.9rem; color: var(--white); font-weight: 500; }
 
-    /* ========== SIZES ========== */
-    .sizes-section {
-      background: var(--gray-800);
-      border-radius: 12px;
-      padding: 1.25rem;
-      border: 1px solid var(--gray-600);
-    }
-
-    .sizes-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.9rem;
-      color: var(--neon-primary);
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .sizes-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-
-    .size-tag {
-      background: var(--gray-600);
-      color: var(--white);
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      border: 1px solid var(--gray-500);
-      transition: all 0.3s ease;
-    }
-
-    .size-tag:hover { border-color: var(--neon-primary); box-shadow: 0 0 10px var(--neon-glow); }
-
     /* ========== CTA BUTTON ========== */
     .cta-button {
       width: 100%;
@@ -571,6 +698,8 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
       font-weight: 700;
       letter-spacing: 2px;
       border-radius: 10px;
+      -webkit-tap-highlight-color: rgba(57, 255, 20, 0.2);
+      touch-action: manipulation;
       cursor: pointer;
       position: relative;
       overflow: hidden;
@@ -587,40 +716,48 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
 
     .cta-button i { margin-right: 0.5rem; }
 
-    /* ========== DESCRIPTION ========== */
-    .description-section {
-      background: var(--gray-800);
-      border-radius: 12px;
-      padding: 1.25rem;
+    /* ========== WA VERIFY ========== */
+    .wa-verify-box {
+      margin-top: 0.75rem;
+      padding: 1rem;
+      background: rgba(57, 255, 20, 0.05);
       border: 1px solid var(--gray-600);
-      margin-top: 2rem;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .description-header {
+      border-radius: 12px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 0.75rem;
-      margin-bottom: 1rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--gray-600);
     }
 
-    .description-header i { font-size: 1.2rem; color: var(--neon-primary); }
-
-    .description-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
-      color: var(--neon-primary);
-    }
-
-    .description-content {
-      font-size: 0.95rem;
-      line-height: 1.7;
+    .wa-verify-text {
       color: var(--gray-200);
+      font-size: 0.85rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
+
+    .wa-verify-text i {
+      color: var(--neon-primary);
+      font-size: 1rem;
+    }
+
+    .wa-confirm-btn {
+      width: auto;
+      padding: 0.75rem 2rem;
+      background: #25d366;
+      border-color: #25d366;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    .wa-confirm-btn:hover {
+      background: #128c7e;
+      border-color: #128c7e;
+      color: #fff;
+    }
+
 
     /* ========== RELATED PRODUCTS ========== */
     .related-section {
@@ -778,27 +915,64 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
 
     .modal-footer { border-top: 1px solid var(--gray-600); padding: 1.25rem; }
 
-    /* ========== WHATSAPP BUTTON ========== */
-    .floating-whatsapp {
+    /* ========== FLOATING GURU BUTTON ========== */
+    .floating-guru {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 55px;
-      height: 55px;
-      background: linear-gradient(135deg, #25d366, #128c7e);
-      color: var(--white);
-      border-radius: 50%;
+      bottom: 25px;
+      right: 25px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
       text-decoration: none;
-      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
       z-index: 99;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease;
+      animation: guruFloatBounce 3s ease-in-out infinite;
     }
-
-    .floating-whatsapp:hover { transform: scale(1.1); color: var(--white); }
+    .floating-guru:hover {
+      transform: scale(1.1) translateY(-5px);
+      animation: none;
+    }
+    .guru-float-img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 15px var(--neon-glow)) drop-shadow(0 0 30px rgba(57, 255, 20, 0.2));
+      transition: filter 0.3s ease;
+    }
+    .floating-guru:hover .guru-float-img {
+      filter: drop-shadow(0 0 20px var(--neon-glow)) drop-shadow(0 0 40px rgba(57, 255, 20, 0.4));
+    }
+    .guru-float-bubble {
+      position: absolute;
+      bottom: 100%;
+      right: 0;
+      margin-bottom: 6px;
+      padding: 0.4rem 0.8rem;
+      background: var(--neon-primary);
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 800;
+      white-space: nowrap;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(57, 255, 20, 0.4);
+      animation: bubbleFloat 2s ease-in-out infinite;
+    }
+    .guru-float-bubble::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      right: 20px;
+      border: 6px solid transparent;
+      border-top-color: var(--neon-primary);
+    }
+    @keyframes guruFloatBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes bubbleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
 
     /* ========== RESPONSIVE - TABLET ========== */
     @media (max-width: 968px) {
@@ -828,11 +1002,33 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
 
       .product-image-section { position: relative; }
 
+      .info-cards-row { grid-template-columns: 1fr; gap: 1rem; }
+
       .related-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     /* ========== RESPONSIVE - MOBILE ========== */
     @media (max-width: 768px) {
+      html, body {
+        height: auto;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .detalle-layout {
+        height: auto;
+        min-height: 100vh;
+      }
+
+      .detalle-main {
+        height: auto;
+        overflow: visible;
+      }
+
+      .detalle-content {
+        overflow: visible;
+      }
+
       .detalle-header { padding: 0.75rem 1rem; }
       .back-btn span { display: none; }
       .detalle-title { font-size: 1rem; }
@@ -843,10 +1039,34 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
       .product-price { font-size: 1.6rem; }
 
       .specs-grid { grid-template-columns: 1fr; }
+      .specs-grid-card { grid-template-columns: 1fr; }
 
       .related-nav { display: none; }
       .related-grid { gap: 1rem; }
       .related-card__image img { height: 120px; }
+
+      .floating-guru { bottom: 15px; right: 15px; }
+      .guru-float-img { width: 55px; height: 55px; }
+      .guru-float-bubble { font-size: 0.6rem; padding: 0.3rem 0.6rem; }
+
+      .bg-particles { display: none; }
+      .bottom-glow { display: none; }
+      .decor { display: none; }
+
+      .detalle-content,
+      .detalle-header {
+        position: relative;
+        z-index: 5;
+      }
+
+      .info-card__header,
+      .info-card__toggle,
+      .cta-button,
+      .back-btn,
+      .related-card {
+        position: relative;
+        z-index: 10;
+      }
     }
 
     /* ========== RESPONSIVE - SMALL MOBILE ========== */
@@ -866,7 +1086,7 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
       .related-card__image img { height: 100px; }
       .related-card__title { font-size: 0.7rem; }
 
-      .decor { width: 40px; height: 40px; opacity: 0.2; }
+      .decor { width: 25px; height: 25px; opacity: 0.15; }
 
       .floating-menu-toggle {
         top: 15px;
@@ -875,6 +1095,15 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
         height: 45px;
         font-size: 1.3rem;
       }
+
+      .product-main-image { max-height: 300px; }
+
+      .info-cards-row { gap: 0.75rem; }
+      .info-card__content { padding: 1rem; font-size: 0.85rem; }
+      .info-card__header { padding: 0.75rem 1rem; }
+      .info-card__title h3 { font-size: 0.75rem; }
+
+      .related-title { font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -884,7 +1113,7 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
 <div id="scan-loader">
   <div class="scan-container">
     <div class="scan-logo">
-      <img src="assets/img/gurulogo.png" alt="El Gurú de los Cascos">
+      <img src="assets/img/logos_new/logo_fondo_negro.png" alt="El Gurú de los Cascos">
       <div class="scan-line"></div>
     </div>
     <div class="scan-text">CARGANDO</div>
@@ -900,19 +1129,17 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
   <span class="toggle-pulse"></span>
 </button>
 
-<!-- Sidebar Overlay -->
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-
 <!-- Main Layout -->
 <div class="detalle-layout">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <!-- Sidebar Navigation -->
   <nav class="sidebar" id="sidebar">
     <div class="sidebar__header">
       <a href="index.php" class="sidebar__logo">
-        <img src="assets/img/gurulogo.png" alt="Logo">
+        <img src="assets/img/logos_new/logo_fondo_negro.png" alt="Logo">
       </a>
-      <span class="sidebar__brand">EL GURÚ</span>
     </div>
 
     <ul class="sidebar__menu">
@@ -940,13 +1167,19 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
           <span>Sobre Mí</span>
         </a>
       </li>
+      <li>
+        <a href="videos.php" class="sidebar__link">
+          <i class="bi bi-play-circle"></i>
+          <span>Videos</span>
+        </a>
+      </li>
     </ul>
 
     <div class="sidebar__footer">
       <div class="sidebar__social">
         <a href="https://www.youtube.com/@EL_GURU_DE_LOS_CASCOS" target="_blank"><i class="bi bi-youtube"></i></a>
-        <a href="https://www.instagram.com/el_guru_de_los_cascos" target="_blank"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.tiktok.com/@el_guru_de_los_cascos" target="_blank"><i class="bi bi-tiktok"></i></a>
+        <a href="https://www.instagram.com/elgurudeloscascos/" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.tiktok.com/@elgurudeloscascos" target="_blank"><i class="bi bi-tiktok"></i></a>
       </div>
     </div>
 
@@ -963,6 +1196,17 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
     <div class="decor decor--top-right"></div>
     <div class="decor decor--bottom-left"></div>
     <div class="decor decor--bottom-right"></div>
+
+    <!-- Background Particles -->
+    <div class="bg-particles">
+      <span class="bg-dot"></span><span class="bg-dot"></span><span class="bg-dot"></span>
+      <span class="bg-dot"></span><span class="bg-dot"></span><span class="bg-dot"></span>
+      <span class="bg-dot"></span><span class="bg-dot"></span><span class="bg-dot"></span>
+      <span class="bg-dot"></span><span class="bg-dot"></span><span class="bg-dot"></span>
+    </div>
+
+    <!-- Bottom green glow (particle source) -->
+    <div class="bottom-glow"></div>
 
     <!-- Header -->
     <header class="detalle-header">
@@ -1011,13 +1255,9 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
             </div>
           </div>
 
-          <!-- Specs -->
-          <div class="specs-section">
-            <h3 class="specs-title">
-              <i class="bi bi-cpu"></i>
-              Especificaciones
-            </h3>
-            <div class="specs-grid">
+          <!-- Especificaciones inline -->
+          <div class="specs-inline">
+            <div class="specs-grid-card">
               <div class="spec-item">
                 <div class="spec-label">Tipo</div>
                 <div class="spec-value"><?= htmlspecialchars($tipo ?: 'N/A') ?></div>
@@ -1034,45 +1274,97 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
                 <div class="spec-label">Color</div>
                 <div class="spec-value"><?= htmlspecialchars($producto['color'] ?: 'N/A') ?></div>
               </div>
+              <?php if ($tallasTexto): ?>
+              <div class="spec-item" style="grid-column: 1 / -1;">
+                <div class="spec-label">Tallas</div>
+                <div class="spec-value"><?= htmlspecialchars($tallasTexto) ?></div>
+              </div>
+              <?php endif; ?>
             </div>
           </div>
 
-          <!-- Sizes -->
-          <?php if ($tallasTexto): ?>
-          <div class="sizes-section">
-            <h3 class="sizes-title">
-              <i class="bi bi-rulers"></i>
-              Tallas Disponibles
-            </h3>
-            <div class="sizes-list">
-              <?php foreach (explode(', ', $tallasTexto) as $talla): ?>
-                <span class="size-tag"><?= htmlspecialchars($talla) ?></span>
-              <?php endforeach; ?>
-            </div>
-          </div>
-          <?php endif; ?>
-
-          <!-- CTA -->
-          <button type="button" class="cta-button" data-bs-toggle="modal" data-bs-target="#modalFormularioCompra">
-            <i class="bi bi-bag-check"></i>
+          <!-- CTA - WhatsApp con verificación -->
+          <?php
+            $whatsapp_numero = '573052332296'; // Cambia por tu número real con código de país
+            $precio_texto = $producto['precio'] !== null ? '$' . number_format($producto['precio'], 0, ',', '.') . ' COP' : 'Consultar precio';
+            $wa_mensaje = "Hola Yaru! 👋 Quiero preguntarte por este casco:\n\n"
+              . "🏍 *Marca:* " . $producto['marca'] . "\n"
+              . "📦 *Referencia:* " . $producto['referencia'] . "\n"
+              . "💰 *Precio:* " . $precio_texto . "\n"
+              . "🎨 *Color:* " . ($producto['color'] ?: 'N/A') . "\n\n"
+              . "¿Está disponible?";
+            $wa_url = "https://wa.me/" . $whatsapp_numero . "?text=" . rawurlencode($wa_mensaje);
+          ?>
+          <button type="button" class="cta-button" id="btnPedir">
+            <i class="bi bi-whatsapp"></i>
             ¡PIDE EL TUYO!
           </button>
+          <div id="wa-verify" style="display:none;">
+            <div class="wa-verify-box">
+              <p class="wa-verify-text"><i class="bi bi-shield-check"></i> Verifica que eres humano</p>
+              <div class="g-recaptcha" id="recaptchaWa" data-sitekey="<?= RECAPTCHA_SITE_KEY ?>" data-callback="onRecaptchaWa"></div>
+              <a id="wa-link" href="<?= $wa_url ?>" target="_blank" class="cta-button wa-confirm-btn" style="display:none; text-decoration:none; text-align:center;">
+                <i class="bi bi-whatsapp"></i>
+                Ir a WhatsApp
+              </a>
+            </div>
+          </div>
 
         </div>
       </div>
 
-      <!-- Description -->
-      <?php if (!empty($producto['descripcion'])): ?>
-      <div class="description-section">
-        <div class="description-header">
-          <i class="bi bi-file-text"></i>
-          <h3 class="description-title">Descripción Detallada</h3>
+      <!-- Info Cards Row -->
+      <div class="info-cards-row">
+
+        <!-- Description Card -->
+        <?php if (!empty($producto['descripcion'])): ?>
+        <div class="info-card">
+          <div class="info-card__header" onclick="this.closest('.info-card').classList.toggle('info-card--open')">
+            <div class="info-card__title">
+              <i class="bi bi-file-text"></i>
+              <h3>Descripción Detallada</h3>
+            </div>
+            <i class="bi bi-chevron-down info-card__arrow"></i>
+          </div>
+          <div class="info-card__body">
+            <div class="info-card__content">
+              <?= nl2br(htmlspecialchars($producto['descripcion'])) ?>
+            </div>
+            <div class="info-card__fade"></div>
+          </div>
+          <button class="info-card__toggle" onclick="this.closest('.info-card').classList.toggle('info-card--open')">
+            <span class="toggle-show">Ver más <i class="bi bi-chevron-down"></i></span>
+            <span class="toggle-hide">Ver menos <i class="bi bi-chevron-up"></i></span>
+          </button>
         </div>
-        <div class="description-content">
-          <?= nl2br(htmlspecialchars($producto['descripcion'])) ?>
+        <?php endif; ?>
+
+        <!-- Technical Specifications Card -->
+        <div class="info-card">
+          <div class="info-card__header" onclick="this.closest('.info-card').classList.toggle('info-card--open')">
+            <div class="info-card__title">
+              <i class="bi bi-gear"></i>
+              <h3>Especificaciones Técnicas</h3>
+            </div>
+            <i class="bi bi-chevron-down info-card__arrow"></i>
+          </div>
+          <div class="info-card__body">
+            <div class="info-card__content">
+              <?php if (!empty($producto['especificaciones_tecnicas'])): ?>
+                <?= nl2br(htmlspecialchars($producto['especificaciones_tecnicas'])) ?>
+              <?php else: ?>
+                <p style="color: var(--gray-300); font-style: italic;">Especificaciones técnicas del casco</p>
+              <?php endif; ?>
+            </div>
+            <div class="info-card__fade"></div>
+          </div>
+          <button class="info-card__toggle" onclick="this.closest('.info-card').classList.toggle('info-card--open')">
+            <span class="toggle-show">Ver más <i class="bi bi-chevron-down"></i></span>
+            <span class="toggle-hide">Ver menos <i class="bi bi-chevron-up"></i></span>
+          </button>
         </div>
+
       </div>
-      <?php endif; ?>
 
       <!-- Related Products -->
       <?php if (!empty($relacionados)): ?>
@@ -1114,58 +1406,21 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
 
 </div>
 
-<!-- WhatsApp Button -->
-<a href="https://wa.me/tuNumero" target="_blank" class="floating-whatsapp">
-  <i class="bi bi-whatsapp"></i>
+<!-- Floating Guru Button -->
+<a href="https://wa.me/573052332296?text=Hola%20Guru!%20Quiero%20preguntarte%20por%20un%20casco" target="_blank" class="floating-guru">
+  <span class="guru-float-bubble">Preguntame!</span>
+  <img src="assets/img/logos_new/logo_fondo_negro.png" alt="Gurú" class="guru-float-img">
 </a>
 
-<!-- Modal -->
-<div class="modal fade" id="modalFormularioCompra" tabindex="-1" aria-labelledby="modalFormularioLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <form id="formCompra" method="POST" class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalFormularioLabel">
-          <i class="bi bi-envelope-paper me-2"></i>
-          Solicita este casco
-        </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
-        <input type="hidden" name="marca" value="<?= htmlspecialchars($producto['marca']) ?>">
-        <input type="hidden" name="referencia" value="<?= htmlspecialchars($producto['referencia']) ?>">
-        <input type="hidden" name="tipo" value="compra">
 
-        <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre completo</label>
-          <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Tu nombre" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="telefono" class="form-label">Teléfono o WhatsApp</label>
-          <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Tu número de contacto" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="observaciones" class="form-label">Observaciones (opcional)</label>
-          <textarea class="form-control" name="observaciones" id="observaciones" rows="3" placeholder="Talla preferida, dudas, etc."></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="cta-button" style="width: auto;">
-          <i class="bi bi-send me-2"></i>
-          Enviar solicitud
-        </button>
-      </div>
-    </form>
-  </div>
-</div>
-
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   // Loader
   const loader = document.getElementById('scan-loader');
   setTimeout(() => {
+    document.body.classList.add('loaded');
     loader.classList.add('done');
     setTimeout(() => loader.style.display = 'none', 500);
   }, 1500);
@@ -1191,7 +1446,7 @@ document.addEventListener('DOMContentLoaded', () => {
     floatingToggle.classList.remove('active');
     floatingToggle.querySelector('i').classList.remove('bi-x-lg');
     floatingToggle.querySelector('i').classList.add('bi-list');
-    document.body.style.overflow = '';
+    document.body.style.overflow = window.innerWidth <= 768 ? 'auto' : '';
   }
 
   function toggleSidebar() {
@@ -1269,34 +1524,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Form submission
-  const modalElement = document.getElementById('modalFormularioCompra');
-  const modalInstance = new bootstrap.Modal(modalElement);
+  // WhatsApp button with rate limiting
+  const btnPedir = document.getElementById('btnPedir');
+  const waVerify = document.getElementById('wa-verify');
 
-  document.getElementById('formCompra').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
+  if (btnPedir) {
+    btnPedir.addEventListener('click', function() {
+      // Rate limiting: max 5 per hour
+      const key = 'wa_clicks';
+      const now = Date.now();
+      let clicks = JSON.parse(localStorage.getItem(key) || '[]');
+      clicks = clicks.filter(t => now - t < 3600000); // last hour only
 
-    fetch('guardar_formulario.php', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) return response.text();
-      throw new Error('Error al enviar formulario');
-    })
-    .then(() => {
-      alert("¡Se ha enviado con éxito! Nos pondremos en contacto contigo pronto.");
-      form.reset();
-      modalInstance.hide();
-    })
-    .catch(error => {
-      console.error(error);
-      alert('Hubo un error al enviar. Intenta nuevamente.');
+      if (clicks.length >= 5) {
+        alert('Has hecho muchas solicitudes. Intenta de nuevo más tarde.');
+        return;
+      }
+
+      // Show verification
+      btnPedir.style.display = 'none';
+      waVerify.style.display = 'block';
     });
-  });
+  }
 });
+
+// reCAPTCHA callback (must be global)
+function onRecaptchaWa(token) {
+  if (token) {
+    const waLink = document.getElementById('wa-link');
+    waLink.style.display = 'flex';
+
+    // Save click timestamp
+    const key = 'wa_clicks';
+    const now = Date.now();
+    let clicks = JSON.parse(localStorage.getItem(key) || '[]');
+    clicks.push(now);
+    localStorage.setItem(key, JSON.stringify(clicks));
+  }
+}
 </script>
 
 </body>

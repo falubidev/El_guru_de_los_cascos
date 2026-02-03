@@ -1,6 +1,6 @@
 <!-- Loader funcional con logo -->
 <div id="loader" style="position: fixed; inset: 0; background: #000; z-index: 99999; display: flex; align-items: center; justify-content: center;">
-  <img src="assets/img/gurulogo.png" alt="Cargando..." style="width: 100px; animation: pulse 1.5s infinite;">
+  <img src="assets/img/logos_new/logo_fondo_negro.png" alt="Cargando..." style="width: 100px; animation: pulse 1.5s infinite;">
 </div>
 
 <style>
@@ -48,6 +48,7 @@
     const loader = document.getElementById('loader');
     if (loader) {
       setTimeout(() => {
+        document.body.classList.add('loaded');
         loader.classList.add('explode');
         setTimeout(() => {
           loader.style.display = "none";

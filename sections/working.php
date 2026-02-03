@@ -19,10 +19,10 @@
           <a href="https://www.youtube.com/@EL_GURU_DE_LOS_CASCOS" target="_blank" class="social-link">
             <i class="bi bi-youtube" style="font-size: 2rem;"></i>
           </a>
-          <a href="https://www.instagram.com/el_guru_de_los_cascos" target="_blank" class="social-link">
+          <a href="https://www.instagram.com/elgurudeloscascos/" target="_blank" class="social-link">
             <i class="bi bi-instagram" style="font-size: 2rem;"></i>
           </a>
-          <a href="https://www.tiktok.com/@el_guru_de_los_cascos?_t=8mNTpgPyAPW&_r=1" target="_blank" class="social-link">
+          <a href="https://www.tiktok.com/@elgurudeloscascos" target="_blank" class="social-link">
             <i class="bi bi-tiktok" style="font-size: 2rem;"></i>
           </a>
         </div>

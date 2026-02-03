@@ -10,7 +10,9 @@
       "Bash(grep:*)",
       "Bash(wc:*)",
       "Bash(ls:*)",
-      "Bash(node --check:*)"
+      "Bash(node --check:*)",
+      "WebFetch(domain:www.youtube.com)",
+      "Bash(find:*)"
     ]
   }
 }

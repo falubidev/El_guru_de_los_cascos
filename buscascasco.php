@@ -1,3 +1,4 @@
+<?php require_once 'admin/db.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,7 +11,7 @@
   <div id="scan-loader">
     <div class="scan-container">
       <div class="scan-logo">
-        <img src="assets/img/gurulogo.png" alt="El Gurú de los Cascos">
+        <img src="assets/img/logos_new/logo_fondo_negro.png" alt="El Gurú de los Cascos">
         <div class="scan-line"></div>
       </div>
       <div class="scan-text">ASESORÍA</div>
@@ -27,18 +28,17 @@
   </button>
 
   <!-- Sidebar Overlay -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
   <!-- Main Layout -->
   <div class="cascos-layout">
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <!-- Sidebar Navigation -->
     <nav class="sidebar" id="sidebar">
       <div class="sidebar__header">
         <a href="index.php" class="sidebar__logo">
-          <img src="assets/img/gurulogo.png" alt="Logo">
+          <img src="assets/img/logos_new/logo_fondo_negro.png" alt="Logo">
         </a>
-        <span class="sidebar__brand">EL GURÚ</span>
       </div>
 
       <ul class="sidebar__menu">
@@ -66,13 +66,19 @@
             <span>Sobre Mí</span>
           </a>
         </li>
+        <li>
+          <a href="videos.php" class="sidebar__link">
+            <i class="bi bi-play-circle"></i>
+            <span>Videos</span>
+          </a>
+        </li>
       </ul>
 
       <div class="sidebar__footer">
         <div class="sidebar__social">
           <a href="https://www.youtube.com/@EL_GURU_DE_LOS_CASCOS" target="_blank"><i class="bi bi-youtube"></i></a>
-          <a href="https://www.instagram.com/el_guru_de_los_cascos" target="_blank"><i class="bi bi-instagram"></i></a>
-          <a href="https://www.tiktok.com/@el_guru_de_los_cascos" target="_blank"><i class="bi bi-tiktok"></i></a>
+          <a href="https://www.instagram.com/elgurudeloscascos/" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.tiktok.com/@elgurudeloscascos" target="_blank"><i class="bi bi-tiktok"></i></a>
         </div>
       </div>
 
@@ -90,65 +96,19 @@
       <div class="decor decor--bottom-left"></div>
       <div class="decor decor--bottom-right"></div>
 
-      <!-- Content Container - Two Column Layout -->
+      <!-- Centered Layout -->
       <div class="asesoria-content">
 
-        <!-- Left Column: Info -->
-        <div class="info-column">
-          <header class="asesoria-header">
-            <h1 class="asesoria-title">
-              <span class="title-accent">¿Buscas</span><br>un casco?
-            </h1>
-            <p class="asesoria-subtitle">Te ayudo a elegir el ideal para ti</p>
-          </header>
+        <!-- Top: Header + Brands -->
+        <header class="asesoria-header">
+          <h1 class="asesoria-title">
+            <span class="title-accent">¿Buscas</span> un casco?
+          </h1>
+          <p class="asesoria-subtitle">Te ayudo a elegir el ideal para ti</p>
+        </header>
 
-          <!-- Brands Marquee - REVERSE Direction, FULL COLOR -->
-          <div class="brands-marquee">
-            <div class="brands-marquee__track">
-              <div class="brands-marquee__content">
-                <div class="brand-item">
-                  <img src="assets/img/hjc.png" alt="HJC">
-                </div>
-                <div class="brand-item">
-                  <img src="assets/img/nexx.jpg" alt="NEXX">
-                </div>
-                <div class="brand-item">
-                  <img src="assets/img/nolan.png" alt="NOLAN">
-                </div>
-                <div class="brand-item">
-                  <img src="assets/img/agv.png" alt="AGV">
-                </div>
-                <div class="brand-item">
-                  <img src="assets/img/hjc.png" alt="LS2">
-                </div>
-                <div class="brand-item">
-                  <img src="assets/img/hjc.png" alt="SHAFT">
-                </div>
-              </div>
-              <!-- Duplicate for seamless loop -->
-              <div class="brands-marquee__content">
-                <div class="brand-item">
-                  <img src="assets/img/hjc.png" alt="HJC">
-                </div>
-                <div class="brand-item">
-                  <img src="assets/img/nexx.jpg" alt="NEXX">
-                </div>
-                <div class="brand-item">
-                  <img src="assets/img/nolan.png" alt="NOLAN">
-                </div>
-                <div class="brand-item">
-                  <img src="assets/img/agv.png" alt="AGV">
-                </div>
-                <div class="brand-item">
-                  <img src="assets/img/hjc.png" alt="LS2">
-                </div>
-                <div class="brand-item">
-                  <img src="assets/img/hjc.png" alt="SHAFT">
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <!-- Features + Brands (above form) -->
+        <div class="top-info">
           <div class="info-features">
             <div class="feature-item">
               <i class="bi bi-shield-check"></i>
@@ -163,11 +123,36 @@
               <span>Marcas certificadas</span>
             </div>
           </div>
+
+          <div class="brands-marquee">
+            <div class="brands-marquee__track">
+              <div class="brands-marquee__content">
+                <div class="brand-item"><img src="assets/img/hjc.png" alt="HJC"></div>
+                <div class="brand-item"><img src="assets/img/nexx.jpg" alt="NEXX"></div>
+                <div class="brand-item"><img src="assets/img/nolan.png" alt="NOLAN"></div>
+                <div class="brand-item"><img src="assets/img/agv.png" alt="AGV"></div>
+                <div class="brand-item"><img src="assets/img/hjc.png" alt="LS2"></div>
+                <div class="brand-item"><img src="assets/img/hjc.png" alt="SHAFT"></div>
+              </div>
+              <div class="brands-marquee__content">
+                <div class="brand-item"><img src="assets/img/hjc.png" alt="HJC"></div>
+                <div class="brand-item"><img src="assets/img/nexx.jpg" alt="NEXX"></div>
+                <div class="brand-item"><img src="assets/img/nolan.png" alt="NOLAN"></div>
+                <div class="brand-item"><img src="assets/img/agv.png" alt="AGV"></div>
+                <div class="brand-item"><img src="assets/img/hjc.png" alt="LS2"></div>
+                <div class="brand-item"><img src="assets/img/hjc.png" alt="SHAFT"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Right Column: Form -->
+        <!-- Center: Form Card -->
         <div class="form-column">
           <div class="form-card">
+            <div class="form-card__header">
+              <i class="bi bi-headset"></i>
+              <h2>Solicita tu asesoría</h2>
+            </div>
             <form id="formCasco">
               <div class="form-grid">
                 <div class="form-group">
@@ -202,16 +187,22 @@
                   <i class="bi bi-chat-text form-icon"></i>
                 </div>
 
-                <!-- CAPTCHA - Compact Inline -->
-                <div class="form-group form-group--full captcha-row">
-                  <div class="captcha-inline">
-                    <i class="bi bi-robot captcha-icon"></i>
-                    <span class="captcha-label" id="captchaQuestion"></span>
-                    <input type="text" id="captchaAnswer" class="captcha-answer" placeholder="?" required inputmode="numeric" autocomplete="off">
-                    <button type="button" class="captcha-refresh" id="refreshCaptcha" title="Nueva pregunta">
-                      <i class="bi bi-arrow-clockwise"></i>
-                    </button>
+                <!-- Imagen de referencia -->
+                <div class="form-group form-group--full">
+                  <label for="imagen_ref" class="upload-label">
+                    <i class="bi bi-image"></i>
+                    <span id="upload-text">Sube una imagen de referencia (opcional)</span>
+                    <input type="file" name="imagen_ref" id="imagen_ref" accept="image/*" hidden>
+                  </label>
+                  <div id="preview-container" style="display:none;">
+                    <img id="preview-img" src="" alt="Preview">
+                    <button type="button" id="remove-img" class="remove-img-btn"><i class="bi bi-x-lg"></i></button>
                   </div>
+                </div>
+
+                <!-- reCAPTCHA -->
+                <div class="form-group form-group--full recaptcha-wrapper">
+                  <div class="g-recaptcha" data-sitekey="<?= RECAPTCHA_SITE_KEY ?>" data-theme="dark"></div>
                 </div>
 
                 <div class="form-group form-group--full">
@@ -231,10 +222,10 @@
 
   </div>
 
-  <!-- Floating WhatsApp -->
-  <a href="https://wa.me/tuNumero" target="_blank" class="floating-whatsapp">
-    <i class="bi bi-whatsapp"></i>
-    <span class="whatsapp-pulse"></span>
+  <!-- Floating Guru Button -->
+  <a href="https://wa.me/573052332296?text=Hola%20Guru!%20Quiero%20preguntarte%20por%20un%20casco" target="_blank" class="floating-guru">
+    <span class="guru-float-bubble">Pregunta por el tuyo!</span>
+    <img src="assets/img/logos_new/logo_fondo_negro.png" alt="Gurú" class="guru-float-img">
   </a>
 
   <!-- Modals -->
@@ -270,11 +261,11 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content modal-custom modal-custom--error">
         <div class="modal-header">
-          <h5 class="modal-title"><i class="bi bi-robot me-2"></i>Verificación fallida</h5>
+          <h5 class="modal-title"><i class="bi bi-robot me-2"></i>Verificación requerida</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body text-center">
-          La respuesta no es correcta. Por favor, intenta de nuevo.
+          Por favor completa el reCAPTCHA antes de enviar el formulario.
         </div>
       </div>
     </div>
@@ -289,7 +280,7 @@
         </div>
         <div class="modal-body text-center">
           <p>Pronto te contactaré.</p>
-          <img src="assets/img/gurulogo.png" alt="Logo" class="modal-logo">
+          <img src="assets/img/logos_new/logo_fondo_negro.png" alt="Logo" class="modal-logo">
         </div>
       </div>
     </div>
@@ -299,54 +290,12 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // CAPTCHA System
-    let captchaNum1, captchaNum2, captchaOperator, captchaResult;
-
-    function generateCaptcha() {
-      captchaNum1 = Math.floor(Math.random() * 10) + 1;
-      captchaNum2 = Math.floor(Math.random() * 10) + 1;
-
-      // Random operator: +, -, ×
-      const operators = ['+', '-', '×'];
-      captchaOperator = operators[Math.floor(Math.random() * operators.length)];
-
-      // Ensure no negative results for subtraction
-      if (captchaOperator === '-' && captchaNum2 > captchaNum1) {
-        [captchaNum1, captchaNum2] = [captchaNum2, captchaNum1];
-      }
-
-      // Calculate result
-      switch (captchaOperator) {
-        case '+':
-          captchaResult = captchaNum1 + captchaNum2;
-          break;
-        case '-':
-          captchaResult = captchaNum1 - captchaNum2;
-          break;
-        case '×':
-          captchaResult = captchaNum1 * captchaNum2;
-          break;
-      }
-
-      document.getElementById('captchaQuestion').textContent = `${captchaNum1} ${captchaOperator} ${captchaNum2} =`;
-      document.getElementById('captchaAnswer').value = '';
-    }
-
-    function verifyCaptcha() {
-      const userAnswer = parseInt(document.getElementById('captchaAnswer').value, 10);
-      return userAnswer === captchaResult;
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
-      // Initialize CAPTCHA
-      generateCaptcha();
-
-      // Refresh CAPTCHA button
-      document.getElementById('refreshCaptcha').addEventListener('click', generateCaptcha);
 
       // Loader
       const loader = document.getElementById('scan-loader');
       setTimeout(() => {
+        document.body.classList.add('loaded');
         loader.classList.add('done');
         setTimeout(() => loader.style.display = 'none', 500);
       }, 2000);
@@ -393,15 +342,41 @@
         });
       });
 
-      // Form submission with CAPTCHA
+      // Image preview
+      const imgInput = document.getElementById('imagen_ref');
+      const previewContainer = document.getElementById('preview-container');
+      const previewImg = document.getElementById('preview-img');
+      const removeBtn = document.getElementById('remove-img');
+      const uploadText = document.getElementById('upload-text');
+
+      imgInput.addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            previewImg.src = e.target.result;
+            previewContainer.style.display = 'flex';
+            uploadText.textContent = this.files[0].name;
+          };
+          reader.readAsDataURL(this.files[0]);
+        }
+      });
+
+      removeBtn.addEventListener('click', function() {
+        imgInput.value = '';
+        previewContainer.style.display = 'none';
+        previewImg.src = '';
+        uploadText.textContent = 'Sube una imagen de referencia (opcional)';
+      });
+
+      // Form submission with reCAPTCHA
       document.getElementById('formCasco').addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // Verify CAPTCHA first
-        if (!verifyCaptcha()) {
+        // Verify reCAPTCHA
+        const recaptchaResponse = document.querySelector('#formCasco [name="g-recaptcha-response"]');
+        if (!recaptchaResponse || !recaptchaResponse.value) {
           const modalCaptchaError = new bootstrap.Modal(document.getElementById('modalCaptchaError'));
           modalCaptchaError.show();
-          generateCaptcha();
           return false;
         }
 
@@ -410,6 +385,7 @@
         const marca = document.getElementById('marca').value;
         const referencia = document.getElementById('referencia').value;
         const observaciones = document.getElementById('observaciones').value;
+        const imagenInput = document.getElementById('imagen_ref');
 
         // Disable submit button
         const submitBtn = document.getElementById('submitBtn');
@@ -437,6 +413,10 @@
             formData.append('referencia', referencia);
             formData.append('observaciones', observaciones);
             formData.append('tipo', 'formulario');
+            formData.append('g-recaptcha-response', recaptchaResponse.value);
+            if (imagenInput.files[0]) {
+              formData.append('imagen_ref', imagenInput.files[0]);
+            }
 
             return fetch('guardar_formulario.php', {
               method: 'POST',
@@ -450,7 +430,7 @@
             modalConfirmacion.show();
 
             document.getElementById('formCasco').reset();
-            generateCaptcha();
+            if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
 
             if (window.history.replaceState) {
               window.history.replaceState(null, null, window.location.pathname);
@@ -465,6 +445,7 @@
             if (error.message !== "Bloqueado por IP") {
               alert("Error al guardar: " + error.message);
             }
+            if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
           })
           .finally(() => {
             submitBtn.disabled = false;
@@ -566,7 +547,7 @@
     /* ==================== */
     .cascos-layout {
       display: flex;
-      height: 100vh;
+      min-height: 100vh;
       width: 100%;
       opacity: 0;
       animation: fadeIn 0.5s ease 2s forwards;
@@ -579,7 +560,9 @@
     /* ==================== */
     .sidebar {
       width: 80px;
-      height: 100%;
+      height: 100vh;
+      position: sticky;
+      top: 0;
       background: var(--gray-800);
       border-right: 1px solid var(--gray-600);
       display: flex;
@@ -595,7 +578,7 @@
     .sidebar:hover { width: 200px; }
 
     .sidebar__header { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 2rem; }
-    .sidebar__logo img { width: 45px; filter: drop-shadow(0 0 15px var(--neon-glow)); transition: transform 0.3s ease; }
+    .sidebar__logo img { width: 70px; filter: drop-shadow(0 0 15px var(--neon-glow)); transition: transform 0.3s ease; }
     .sidebar__logo:hover img { transform: scale(1.1); }
 
     .sidebar__brand {
@@ -725,27 +708,27 @@
     .sidebar-overlay.active { opacity: 1; }
 
     /* ==================== */
-    /* Main Content - NO SCROLL */
+    /* Main Content */
     /* ==================== */
     .asesoria-main {
       flex: 1;
-      height: 100%;
+      min-height: 100vh;
       background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
       display: flex;
       flex-direction: column;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
 
-    /* Two Column Layout */
+    /* Centered Vertical Layout */
     .asesoria-content {
       flex: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      padding: 2rem 3rem;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      max-height: 100%;
+      justify-content: center;
+      padding: 1rem 2rem;
+      gap: 0.6rem;
     }
 
     .decor { position: absolute; width: 60px; height: 60px; z-index: 1; pointer-events: none; opacity: 0.3; }
@@ -755,48 +738,59 @@
     .decor--bottom-right { bottom: 10px; right: 10px; border-bottom: 2px solid var(--neon-primary); border-right: 2px solid var(--neon-primary); }
 
     /* ==================== */
-    /* Left Column - Info */
+    /* Header - Centered */
     /* ==================== */
-    .info-column {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      padding-right: 1rem;
+    .asesoria-header {
+      text-align: center;
+      position: relative;
+      z-index: 2;
     }
-
-    .asesoria-header { position: relative; z-index: 2; }
 
     .asesoria-title {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
       font-weight: 700;
       color: var(--white);
       text-transform: uppercase;
       letter-spacing: 3px;
       line-height: 1.2;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.15rem;
     }
 
     .title-accent { color: var(--neon-primary); text-shadow: 0 0 20px var(--neon-glow); }
 
     .asesoria-subtitle {
-      font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+      font-size: clamp(0.85rem, 1.3vw, 1rem);
       color: var(--gray-200);
       letter-spacing: 2px;
+    }
+
+    /* ==================== */
+    /* Top Info (Features + Brands) */
+    /* ==================== */
+    .top-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      width: 100%;
+      max-width: 650px;
     }
 
     /* Features */
     .info-features {
       display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
     }
 
     .feature-item {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      padding: 0.6rem 1rem;
+      gap: 0.4rem;
+      padding: 0.35rem 0.8rem;
       background: var(--gray-800);
       border: 1px solid var(--gray-600);
       border-radius: 8px;
@@ -805,17 +799,18 @@
 
     .feature-item:hover {
       border-color: var(--neon-primary);
-      transform: translateX(5px);
+      transform: translateY(-2px);
     }
 
     .feature-item i {
       color: var(--neon-primary);
-      font-size: 1.1rem;
+      font-size: 0.85rem;
     }
 
     .feature-item span {
       color: var(--gray-200);
-      font-size: 0.85rem;
+      font-size: 0.75rem;
+      white-space: nowrap;
     }
 
     /* ==================== */
@@ -823,9 +818,10 @@
     /* ==================== */
     .brands-marquee {
       width: 100%;
+      max-width: 620px;
       overflow: hidden;
       position: relative;
-      padding: 0.75rem 0;
+      padding: 0.25rem 0;
       mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
       -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     }
@@ -850,7 +846,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.6rem 1rem;
+      padding: 0.4rem 0.7rem;
       background: linear-gradient(145deg, var(--gray-800), var(--gray-700));
       border: 1px solid var(--gray-600);
       border-radius: 10px;
@@ -866,8 +862,8 @@
 
     /* FULL COLOR - No grayscale filter */
     .brand-item img {
-      width: 45px;
-      height: 45px;
+      width: 35px;
+      height: 35px;
       object-fit: contain;
       transition: transform 0.3s ease;
     }
@@ -883,21 +879,22 @@
     }
 
     /* ==================== */
-    /* Right Column - Form */
+    /* Form - Centered */
     /* ==================== */
     .form-column {
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
     }
 
     .form-card {
       background: var(--gray-800);
       border: 1px solid var(--gray-600);
       border-radius: 16px;
-      padding: 1.5rem;
+      padding: 1.2rem 2rem;
       width: 100%;
-      max-width: 420px;
+      max-width: 620px;
       position: relative;
       z-index: 2;
     }
@@ -917,7 +914,32 @@
       pointer-events: none;
     }
 
-    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+    .form-card__header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--gray-600);
+    }
+
+    .form-card__header i {
+      font-size: 1.2rem;
+      color: var(--neon-primary);
+      filter: drop-shadow(0 0 8px var(--neon-glow));
+    }
+
+    .form-card__header h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
     .form-group { position: relative; }
     .form-group--full { grid-column: 1 / -1; }
 
@@ -926,9 +948,9 @@
       background: var(--gray-700);
       border: 1px solid var(--gray-500);
       border-radius: 10px;
-      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      padding: 0.7rem 0.9rem 0.7rem 2.5rem;
       color: var(--white);
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       transition: all 0.3s ease;
     }
 
@@ -937,7 +959,7 @@
 
     select.form-input { cursor: pointer; appearance: none; }
     select.form-input option { background: var(--gray-800); color: var(--white); }
-    textarea.form-input { resize: none; min-height: 60px; }
+    textarea.form-input { resize: none; min-height: 55px; }
 
     .form-icon {
       position: absolute;
@@ -954,92 +976,91 @@
     .form-input:focus + .form-icon { color: var(--neon-primary); }
 
     /* ==================== */
-    /* CAPTCHA - Compact Inline */
+    /* Image Upload */
     /* ==================== */
-    .captcha-row {
-      margin-top: 0.25rem;
-    }
-
-    .captcha-inline {
+    .upload-label {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      background: linear-gradient(145deg, var(--gray-700), var(--gray-800));
-      border: 1px solid var(--gray-500);
+      padding: 0.6rem 1rem;
+      background: var(--gray-700);
+      border: 1px dashed var(--gray-500);
       border-radius: 10px;
-      padding: 0.5rem 0.75rem;
+      color: var(--gray-300);
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    .captcha-icon {
+    .upload-label:hover {
+      border-color: var(--neon-primary);
       color: var(--neon-primary);
-      font-size: 1.2rem;
-      flex-shrink: 0;
     }
 
-    .captcha-label {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: 2px;
+    .upload-label i {
+      font-size: 1rem;
+      color: var(--neon-primary);
+    }
+
+    .upload-label span {
+      overflow: hidden;
+      text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-    .captcha-answer {
-      width: 60px;
+    #preview-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+    }
+
+    #preview-img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--gray-500);
+    }
+
+    .remove-img-btn {
       background: var(--gray-600);
       border: 1px solid var(--gray-500);
-      border-radius: 8px;
-      padding: 0.5rem;
-      color: var(--neon-primary);
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      text-align: center;
-      letter-spacing: 2px;
-      transition: all 0.3s ease;
-    }
-
-    .captcha-answer:focus {
-      outline: none;
-      border-color: var(--neon-primary);
-      box-shadow: 0 0 0 2px rgba(57, 255, 20, 0.2);
-    }
-
-    .captcha-answer::placeholder {
-      color: var(--gray-400);
-    }
-
-    .captcha-refresh {
-      width: 36px;
-      height: 36px;
-      background: var(--gray-600);
-      border: 1px solid var(--gray-500);
-      border-radius: 8px;
-      color: var(--gray-300);
-      font-size: 1rem;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: var(--gray-200);
+      font-size: 0.65rem;
       cursor: pointer;
       transition: all 0.3s ease;
-      flex-shrink: 0;
-      margin-left: auto;
+      padding: 0;
     }
 
-    .captcha-refresh:hover {
-      border-color: var(--neon-primary);
-      color: var(--neon-primary);
-      background: rgba(57, 255, 20, 0.1);
+    .remove-img-btn:hover {
+      background: #dc3545;
+      border-color: #dc3545;
+      color: #fff;
     }
 
-    .captcha-refresh:active i {
-      animation: spinOnce 0.5s ease;
+    /* ==================== */
+    /* reCAPTCHA */
+    /* ==================== */
+    .recaptcha-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.2rem;
+      padding: 0.4rem 0;
+      background: var(--gray-700);
+      border: 1px solid var(--gray-500);
+      border-radius: 10px;
     }
 
-    @keyframes spinOnce {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    .recaptcha-wrapper .g-recaptcha {
+      transform: scale(0.85);
+      transform-origin: center;
     }
 
     /* ==================== */
@@ -1050,10 +1071,10 @@
       background: linear-gradient(135deg, var(--neon-primary), #2ecc71);
       border: none;
       border-radius: 10px;
-      padding: 0.85rem 1.5rem;
+      padding: 0.75rem 1.5rem;
       color: var(--gray-900);
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 700;
       letter-spacing: 1px;
       cursor: pointer;
@@ -1062,6 +1083,7 @@
       justify-content: center;
       gap: 0.75rem;
       transition: all 0.3s ease;
+      margin-top: 0.1rem;
     }
 
     .btn-submit:hover:not(:disabled) {
@@ -1100,30 +1122,67 @@
     }
 
     /* ==================== */
-    /* Floating WhatsApp */
+    /* Floating Guru */
     /* ==================== */
-    .floating-whatsapp {
+    .floating-guru {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 55px;
-      height: 55px;
-      background: linear-gradient(135deg, #25d366, #128c7e);
-      color: var(--white);
-      border-radius: 50%;
+      bottom: 25px;
+      right: 25px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
       text-decoration: none;
-      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
       z-index: 99;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease;
+      animation: guruFloatBounce 3s ease-in-out infinite;
     }
-
-    .floating-whatsapp:hover { transform: scale(1.1); color: var(--white); }
-    .whatsapp-pulse { position: absolute; width: 100%; height: 100%; border-radius: 50%; background: rgba(37, 211, 102, 0.4); animation: whatsappPulse 2s ease-out infinite; }
-    @keyframes whatsappPulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.8); opacity: 0; } }
+    .floating-guru:hover {
+      transform: scale(1.1) translateY(-5px);
+      animation: none;
+    }
+    .guru-float-img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 15px var(--neon-glow)) drop-shadow(0 0 30px rgba(57, 255, 20, 0.2));
+      transition: filter 0.3s ease;
+    }
+    .floating-guru:hover .guru-float-img {
+      filter: drop-shadow(0 0 20px var(--neon-glow)) drop-shadow(0 0 40px rgba(57, 255, 20, 0.4));
+    }
+    .guru-float-bubble {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 6px;
+      padding: 0.4rem 0.8rem;
+      background: var(--neon-primary);
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 800;
+      white-space: nowrap;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(57, 255, 20, 0.4);
+      animation: bubbleFloat 2s ease-in-out infinite;
+    }
+    .guru-float-bubble::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--neon-primary);
+    }
+    @keyframes guruFloatBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes bubbleFloat {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-4px); }
+    }
 
     /* ==================== */
     /* RESPONSIVE - TABLET */
@@ -1150,41 +1209,14 @@
       .sidebar--open .sidebar__link span { opacity: 1; }
       .sidebar__close { display: flex; }
 
-      /* Stack columns on tablet */
       .asesoria-content {
-        grid-template-columns: 1fr;
-        padding: 1.5rem;
-        gap: 1.5rem;
-        overflow-y: auto;
-      }
-
-      .info-column {
-        padding-right: 0;
-        text-align: center;
-      }
-
-      .info-features {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        padding: 1rem;
         gap: 0.5rem;
-      }
-
-      .feature-item {
-        flex: 0 1 auto;
-        padding: 0.5rem 0.75rem;
-      }
-
-      .feature-item:hover {
-        transform: translateY(-3px);
-      }
-
-      .form-column {
-        justify-content: center;
       }
 
       .form-card {
         max-width: 100%;
+        padding: 1rem 1.2rem;
       }
 
       .decor { width: 40px; height: 40px; }
@@ -1194,43 +1226,73 @@
     /* RESPONSIVE - MOBILE */
     /* ==================== */
     @media (max-width: 768px) {
-      .asesoria-content { padding: 1rem; gap: 1rem; }
-      .form-grid { grid-template-columns: 1fr; gap: 0.6rem; }
-      .form-card { padding: 1rem; }
-      .brands-marquee { padding: 0.5rem 0; }
-      .brand-item { padding: 0.5rem 0.75rem; }
-      .brand-item img { width: 35px; height: 35px; }
-      .decor { width: 35px; height: 35px; }
-      .floating-whatsapp { width: 48px; height: 48px; font-size: 1.4rem; bottom: 15px; right: 15px; }
+      html, body {
+        height: 100%;
+        overflow: hidden;
+      }
 
+      .cascos-layout {
+        height: 100vh;
+        min-height: 100vh;
+      }
+
+      .asesoria-main {
+        height: 100%;
+        min-height: 100%;
+        overflow: hidden;
+      }
+
+      .asesoria-content {
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        padding: 0.75rem;
+        gap: 0.5rem;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .decor { display: none; }
+
+      .asesoria-header { margin-top: 2.5rem; }
+      .asesoria-title { font-size: 1.2rem; letter-spacing: 2px; }
+      .asesoria-subtitle { font-size: 0.8rem; letter-spacing: 1px; }
+
+      .top-info { max-width: 100%; gap: 0.3rem; }
       .info-features { display: none; }
+      .brands-marquee { padding: 0.15rem 0; }
+      .brand-item { padding: 0.25rem 0.5rem; }
+      .brand-item img { width: 26px; height: 26px; }
 
-      .captcha-label { font-size: 0.85rem; }
-      .captcha-answer { width: 50px; font-size: 0.9rem; }
-    }
+      .form-column { width: 100%; }
+      .form-card {
+        max-width: 100%;
+        padding: 0.8rem;
+        border-radius: 12px;
+      }
+      .form-card__header { margin-bottom: 0.5rem; padding-bottom: 0.5rem; }
+      .form-card__header h2 { font-size: 0.8rem; letter-spacing: 1px; }
+      .form-card__header i { font-size: 1rem; }
 
-    /* ==================== */
-    /* RESPONSIVE - SMALL MOBILE */
-    /* ==================== */
-    @media (max-width: 480px) {
-      .asesoria-content { padding: 0.75rem; }
-      .asesoria-title { font-size: 1.3rem; }
-      .asesoria-subtitle { font-size: 0.8rem; }
+      .form-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+      .form-input { padding: 0.6rem 0.8rem 0.6rem 2.2rem; font-size: 0.85rem; }
+      textarea.form-input { min-height: 45px; }
 
-      .brand-item { padding: 0.4rem 0.6rem; }
-      .brand-item img { width: 30px; height: 30px; }
+      .upload-label { padding: 0.5rem 0.8rem; font-size: 0.78rem; }
 
-      .form-card { padding: 0.85rem; }
-      .form-input { padding: 0.65rem 1rem 0.65rem 2.2rem; font-size: 0.8rem; }
-      .btn-submit { padding: 0.75rem 1rem; font-size: 0.75rem; }
+      .recaptcha-wrapper {
+        padding: 0.3rem 0;
+      }
+      .recaptcha-wrapper .g-recaptcha {
+        transform: scale(0.82);
+        transform-origin: center;
+      }
 
-      .captcha-inline { padding: 0.4rem 0.6rem; gap: 0.4rem; }
-      .captcha-icon { font-size: 1rem; }
-      .captcha-label { font-size: 0.8rem; letter-spacing: 1px; }
-      .captcha-answer { width: 45px; padding: 0.4rem; font-size: 0.85rem; }
-      .captcha-refresh { width: 32px; height: 32px; font-size: 0.9rem; }
+      .btn-submit { padding: 0.6rem 1rem; font-size: 0.8rem; margin-top: 0; }
 
-      .decor { width: 25px; height: 25px; opacity: 0.2; }
+      .floating-guru { bottom: 12px; right: 10px; }
+      .guru-float-img { width: 50px; height: 50px; }
+      .guru-float-bubble { font-size: 0.55rem; padding: 0.25rem 0.5rem; }
 
       .floating-menu-toggle {
         top: 15px;
@@ -1239,6 +1301,51 @@
         height: 45px;
         font-size: 1.3rem;
       }
+    }
+
+    /* ==================== */
+    /* RESPONSIVE - SMALL MOBILE */
+    /* ==================== */
+    @media (max-width: 480px) {
+      .asesoria-title { font-size: 1.05rem; letter-spacing: 1px; }
+      .asesoria-subtitle { font-size: 0.72rem; }
+
+      .brands-marquee { display: none; }
+
+      .form-card { padding: 0.7rem; }
+      .form-input { padding: 0.55rem 0.7rem 0.55rem 2rem; font-size: 0.8rem; }
+      .form-icon { left: 0.7rem; font-size: 0.85rem; }
+      .btn-submit { padding: 0.55rem 0.8rem; font-size: 0.75rem; }
+
+      .recaptcha-wrapper .g-recaptcha {
+        transform: scale(0.72);
+        transform-origin: center;
+      }
+    }
+
+    /* ==================== */
+    /* RESPONSIVE - VERY SMALL MOBILE */
+    /* ==================== */
+    @media (max-width: 380px) {
+      .asesoria-header { margin-top: 2rem; }
+      .asesoria-title { font-size: 0.95rem; }
+      .asesoria-subtitle { font-size: 0.68rem; }
+
+      .form-card { padding: 0.6rem; }
+      .form-card__header { margin-bottom: 0.4rem; padding-bottom: 0.3rem; }
+      .form-card__header h2 { font-size: 0.7rem; }
+      .form-grid { gap: 0.4rem; }
+      .form-input { padding: 0.5rem 0.65rem 0.5rem 1.8rem; font-size: 0.78rem; }
+      textarea.form-input { min-height: 38px; }
+      .upload-label { padding: 0.4rem 0.6rem; font-size: 0.72rem; }
+      .btn-submit { padding: 0.5rem 0.7rem; font-size: 0.72rem; }
+
+      .recaptcha-wrapper .g-recaptcha {
+        transform: scale(0.65);
+        transform-origin: center;
+      }
+
+      .floating-menu-toggle { top: 12px; left: 12px; width: 40px; height: 40px; font-size: 1.2rem; }
     }
 
     /* ==================== */

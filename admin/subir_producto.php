@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $marca = $_POST['marca'] ?? null;
     $color = $_POST['color'] ?? null;
     $descripcion = $_POST['descripcion'] ?? null;
+    $especificaciones_tecnicas = $_POST['especificaciones_tecnicas'] ?? null;
     $precio = $_POST['precio'] ?? null;
     $estado = $_POST['estado'] ?? null;
 
@@ -39,14 +40,15 @@ if (!is_dir($carpeta)) {
 
         if (move_uploaded_file($imagen['tmp_name'], $ruta_destino)) {
 $stmt = $pdo->prepare("INSERT INTO tbl_productos 
-(referencia, marca, color, descripcion, imagen, precio, estado, linea_id, tipo_id, grafico_id, acabado_id, talla_id, nombre_grafico)
-VALUES 
-(:referencia, :marca, :color, :descripcion, :imagen, :precio, :estado, :linea_id, :tipo_id, :grafico_id, :acabado_id, :talla_id, :nombre_grafico)");
+(referencia, marca, color, descripcion, especificaciones_tecnicas, imagen, precio, estado, linea_id, tipo_id, grafico_id, acabado_id, talla_id, nombre_grafico)
+VALUES
+(:referencia, :marca, :color, :descripcion, :especificaciones_tecnicas, :imagen, :precio, :estado, :linea_id, :tipo_id, :grafico_id, :acabado_id, :talla_id, :nombre_grafico)");
             $stmt->execute([
                 ':referencia' => $referencia,
                 ':marca' => $marca,
                 ':color' => $color,
                 ':descripcion' => $descripcion,
+                ':especificaciones_tecnicas' => $especificaciones_tecnicas,
                 ':imagen' => $nombre_archivo,
                 ':precio' => $precio ?: null,
                 ':estado' => $estado,
@@ -58,6 +60,24 @@ VALUES
                 ':nombre_grafico' => $nombre_grafico
 
             ]);
+
+            // Subir galería de imágenes
+            $producto_id = $pdo->lastInsertId();
+            if (!empty($_FILES['galeria']['name'][0])) {
+                $orden = 0;
+                foreach ($_FILES['galeria']['tmp_name'] as $i => $tmpName) {
+                    if ($_FILES['galeria']['error'][$i] === UPLOAD_ERR_OK) {
+                        $extGal = pathinfo($_FILES['galeria']['name'][$i], PATHINFO_EXTENSION);
+                        $nombreGal = uniqid('gal_') . '.' . strtolower($extGal);
+                        $rutaGal = __DIR__ . '/uploads/productos/' . $nombreGal;
+                        if (move_uploaded_file($tmpName, $rutaGal)) {
+                            $stmtGal = $pdo->prepare("INSERT INTO tbl_producto_galeria (producto_id, imagen, orden) VALUES (?, ?, ?)");
+                            $stmtGal->execute([$producto_id, $nombreGal, $orden]);
+                            $orden++;
+                        }
+                    }
+                }
+            }
 
             header('Location: dashboard.php?ok=1');
             exit;

@@ -59,6 +59,11 @@ $relacionados = array_map(function($item) {
   return $item;
 }, $relacionadosRaw);
 
+// Obtener galería de imágenes
+$stmtGaleria = $pdo->prepare("SELECT id, imagen, orden FROM tbl_producto_galeria WHERE producto_id = ? ORDER BY orden ASC");
+$stmtGaleria->execute([$id]);
+$galeria = $stmtGaleria->fetchAll(PDO::FETCH_ASSOC);
+
 // Imagen predeterminada si no hay foto
 $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/productos/' . $producto['imagen'])
   ? 'admin/uploads/productos/' . htmlspecialchars($producto['imagen'])
@@ -484,6 +489,41 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
     }
 
     .product-image-container:hover .product-main-image { transform: scale(1.02); }
+
+    .product-main-image { transition: transform 0.5s ease, opacity 0.2s ease; }
+
+    .gallery-thumbs {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .gallery-thumb {
+      flex-shrink: 0;
+      width: 70px;
+      height: 70px;
+      border-radius: 8px;
+      border: 2px solid var(--gray-600);
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-thumb.active,
+    .gallery-thumb:hover {
+      border-color: var(--neon-primary);
+      box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+    }
+
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
     .product-badge {
       position: absolute;
@@ -1235,8 +1275,21 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
             <div class="product-image-wrapper">
               <img src="<?= $imagenProducto ?>"
                    alt="<?= htmlspecialchars($producto['referencia']) ?>"
-                   class="product-main-image">
+                   class="product-main-image"
+                   id="mainImage">
             </div>
+            <?php if (!empty($galeria)): ?>
+            <div class="gallery-thumbs" id="galleryThumbs">
+              <div class="gallery-thumb active" onclick="changeMainImage(this)">
+                <img src="<?= $imagenProducto ?>" alt="Principal">
+              </div>
+              <?php foreach ($galeria as $gImg): ?>
+              <div class="gallery-thumb" onclick="changeMainImage(this)">
+                <img src="admin/uploads/productos/<?= htmlspecialchars($gImg['imagen']) ?>" alt="Galería">
+              </div>
+              <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
           </div>
         </div>
 
@@ -1547,6 +1600,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Gallery image swap
+function changeMainImage(thumb) {
+  const src = thumb.querySelector('img').src;
+  const main = document.getElementById('mainImage');
+  if (!main) return;
+  main.style.opacity = '0';
+  setTimeout(() => {
+    main.src = src;
+    main.style.opacity = '1';
+  }, 200);
+  document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+}
 
 // reCAPTCHA callback (must be global)
 function onRecaptchaWa(token) {

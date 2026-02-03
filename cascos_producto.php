@@ -300,6 +300,7 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
                   </div>
                   <div class="product-card__content">
                     <span class="product-card__brand"><?= htmlspecialchars($producto['marca']) ?></span>
+                    <span class="product-card__price"><?= $producto['precio'] !== null ? 'Desde $' . number_format($producto['precio'], 0, ',', '.') : 'Consultar' ?></span>
                     <h4 class="product-card__title">
                       <?= htmlspecialchars($producto['referencia']) ?>
                       <?php if (!empty($producto['nombre_grafico'])): ?>
@@ -956,6 +957,15 @@ $tipoActual = !empty($tipo) ? ucfirst($tipo) : 'Todos';
       color: var(--neon-primary);
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+
+    .product-card__price {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--gray-200);
+      margin-top: 0.1rem;
+      display: block;
+      letter-spacing: 0.5px;
     }
 
     .product-card__title {

@@ -7,6 +7,7 @@ $marca = $_POST['marca'] ?? '';
 $tipo = $_POST['tipo'] ?? '';
 $color = $_POST['color'] ?? '';
 $descripcion = $_POST['descripcion'] ?? '';
+$especificaciones_tecnicas = $_POST['especificaciones_tecnicas'] ?? '';
 $nuevaImagen = $_FILES['nueva_imagen'] ?? null;
 
 if (!$id) {
@@ -36,16 +37,17 @@ if ($nuevaImagen && $nuevaImagen['error'] === 0) {
 }
 
 // Actualizar producto
-$stmt = $pdo->prepare("UPDATE tbl_productos SET 
-    referencia = ?, 
-    marca = ?, 
-    tipo = ?, 
-    color = ?, 
-    descripcion = ?, 
+$stmt = $pdo->prepare("UPDATE tbl_productos SET
+    referencia = ?,
+    marca = ?,
+    tipo = ?,
+    color = ?,
+    descripcion = ?,
+    especificaciones_tecnicas = ?,
     imagen = ?
     WHERE id = ?");
 $stmt->execute([
-    $referencia, $marca, $tipo, $color, $descripcion, $nombreImagen, $id
+    $referencia, $marca, $tipo, $color, $descripcion, $especificaciones_tecnicas, $nombreImagen, $id
 ]);
 
 echo "ok";

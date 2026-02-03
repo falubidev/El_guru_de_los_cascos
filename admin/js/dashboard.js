@@ -164,6 +164,9 @@ function editarProducto(id) {
   document.getElementById('edit_tipo').value = producto.tipo;
   document.getElementById('edit_color').value = producto.color;
   document.getElementById('edit_descripcion').value = producto.descripcion;
+  document.getElementById('edit_especificaciones_tecnicas').value = producto.especificaciones_tecnicas || '';
+
+  cargarGaleria(producto.id);
 }
 
 function mostrarCatalogo() {
@@ -180,6 +183,7 @@ document.getElementById('formEditarProductoInterno').addEventListener('submit', 
   datos.append('tipo', document.getElementById('edit_tipo').value);
   datos.append('color', document.getElementById('edit_color').value);
   datos.append('descripcion', document.getElementById('edit_descripcion').value);
+  datos.append('especificaciones_tecnicas', document.getElementById('edit_especificaciones_tecnicas').value);
 
   fetch('editar_producto.php', {
     method: 'POST',
@@ -187,6 +191,20 @@ document.getElementById('formEditarProductoInterno').addEventListener('submit', 
   })
   .then(r => r.text())
   .then(resp => {
+    const inputGaleria = document.getElementById('edit_nueva_galeria');
+    if (inputGaleria && inputGaleria.files.length > 0) {
+      const galeriaData = new FormData();
+      galeriaData.append('producto_id', document.getElementById('edit_id').value);
+      for (let i = 0; i < inputGaleria.files.length; i++) {
+        galeriaData.append('galeria[]', inputGaleria.files[i]);
+      }
+      return fetch('subir_galeria.php', {
+        method: 'POST',
+        body: galeriaData
+      }).then(r => r.json());
+    }
+  })
+  .then(() => {
     alert('Producto actualizado');
     mostrarCatalogo();
     document.getElementById('btnBuscarProductos').click();
@@ -203,4 +221,53 @@ function eliminarProducto() {
       mostrarCatalogo();
       document.getElementById('btnBuscarProductos').click();
     });
+}
+
+function cargarGaleria(productoId) {
+  const contenedor = document.getElementById('edit_galeria_actual');
+  contenedor.innerHTML = '<span class="text-muted">Cargando galería...</span>';
+
+  fetch('get_galeria.php?producto_id=' + productoId)
+    .then(r => r.json())
+    .then(imagenes => {
+      contenedor.innerHTML = '';
+      if (imagenes.length === 0) {
+        contenedor.innerHTML = '<span class="text-muted">Sin imágenes de galería</span>';
+        return;
+      }
+      imagenes.forEach(img => {
+        const div = document.createElement('div');
+        div.className = 'position-relative';
+        div.style.cssText = 'width:80px; height:80px;';
+        div.innerHTML = `
+          <img src="uploads/productos/${img.imagen}" style="width:100%; height:100%; object-fit:cover; border-radius:6px; border:1px solid #ccc;">
+          <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0" style="padding:0 5px; font-size:12px; line-height:1.4;" onclick="eliminarImagenGaleria(${img.id}, this)">&times;</button>
+        `;
+        contenedor.appendChild(div);
+      });
+    });
+}
+
+function eliminarImagenGaleria(id, btn) {
+  if (!confirm('¿Eliminar esta imagen de la galería?')) return;
+
+  const datos = new FormData();
+  datos.append('id', id);
+
+  fetch('eliminar_galeria.php', {
+    method: 'POST',
+    body: datos
+  })
+  .then(r => r.text())
+  .then(resp => {
+    if (resp.trim() === 'ok') {
+      btn.closest('.position-relative').remove();
+      const contenedor = document.getElementById('edit_galeria_actual');
+      if (contenedor.children.length === 0) {
+        contenedor.innerHTML = '<span class="text-muted">Sin imágenes de galería</span>';
+      }
+    } else {
+      alert('Error al eliminar imagen');
+    }
+  });
 }

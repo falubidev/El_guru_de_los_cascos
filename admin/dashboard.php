@@ -280,8 +280,17 @@ $marcas = $marcas_stmt->fetchAll(PDO::FETCH_ASSOC);
               <textarea class="form-control" name="descripcion" id="descripcion" rows="3"></textarea>
             </div>
             <div class="col-md-12">
-              <label for="imagen" class="form-label">Imagen del casco</label>
+              <label for="especificaciones_tecnicas" class="form-label">Especificaciones Técnicas</label>
+              <textarea class="form-control" name="especificaciones_tecnicas" id="especificaciones_tecnicas" rows="4" placeholder="Coraza, ventilación, visor, cierre, etc."></textarea>
+            </div>
+            <div class="col-md-12">
+              <label for="imagen" class="form-label">Imagen del casco (principal)</label>
               <input type="file" class="form-control" name="imagen" id="imagen" accept="image/*" required>
+            </div>
+            <div class="col-md-12">
+              <label for="galeria" class="form-label">Galería de fotos (opcional, múltiples)</label>
+              <input type="file" class="form-control" name="galeria[]" id="galeria" accept="image/*" multiple>
+              <small class="text-muted">Puedes seleccionar varias imágenes a la vez</small>
             </div>
           </div>
         </div>
@@ -362,14 +371,24 @@ $marcas = $marcas_stmt->fetchAll(PDO::FETCH_ASSOC);
         <label class="form-label">Descripción</label>
         <textarea class="form-control" name="descripcion" id="edit_descripcion"></textarea>
       </div>
+      <div class="col-md-12">
+        <label class="form-label">Especificaciones Técnicas</label>
+        <textarea class="form-control" name="especificaciones_tecnicas" id="edit_especificaciones_tecnicas" rows="4" placeholder="Coraza, ventilación, visor, cierre, etc."></textarea>
+      </div>
     </div>
       <div class="mb-3">
       <label class="form-label">Imagen actual:</label><br>
       <img id="edit_imagen_actual" src="" style="max-height: 150px;">
       </div>
       <div class="mb-3">
-        <label for="edit_nueva_imagen" class="form-label">Nueva imagen (opcional)</label>
+        <label for="edit_nueva_imagen" class="form-label">Nueva imagen principal (opcional)</label>
         <input type="file" class="form-control" name="nueva_imagen" id="edit_nueva_imagen" accept="image/*">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Galería actual:</label>
+        <div id="edit_galeria_actual" class="d-flex flex-wrap gap-2 mb-2"></div>
+        <label for="edit_nueva_galeria" class="form-label">Agregar más fotos a la galería</label>
+        <input type="file" class="form-control" name="nueva_galeria[]" id="edit_nueva_galeria" accept="image/*" multiple>
       </div>
     <div class="mt-3 d-flex justify-content-between">
       <button type="button" class="btn btn-secondary" onclick="mostrarCatalogo()">⬅ Volver</button>

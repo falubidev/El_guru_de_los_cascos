@@ -1301,8 +1301,8 @@ $imagenProducto = !empty($producto['imagen']) && file_exists('admin/uploads/prod
             <div class="product-brand"><?= htmlspecialchars($producto['marca']) ?></div>
             <h2 class="product-name"><?= htmlspecialchars($producto['referencia']) ?></h2>
             <div class="product-price">
-              <?= $producto['precio'] !== null ? '$' . number_format($producto['precio'], 0, ',', '.') : 'Consultar' ?>
-              <?php if ($producto['precio'] !== null): ?>
+              <span>Desde</span><?= $producto['precio'] !== null ? ' $' . number_format($producto['precio'], 0, ',', '.') : 'Consultar' ?>
+               <?php if ($producto['precio'] !== null): ?>
                 <span>COP</span>
               <?php endif; ?>
             </div>
